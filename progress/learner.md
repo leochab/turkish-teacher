@@ -33,57 +33,10 @@
 
 ## What I've Covered
 
-Update this after each lesson. Check off topics as you complete them.
+> Completion is tracked in `curriculum/index.md`. See the ✓ column there for the full list.
+> Below, note only topics that need extra review or that were partially covered.
 
-### A1
-- [ ] Alphabet & pronunciation
-- [ ] Vowel harmony — introduction
-- [ ] Greetings and introductions
-- [ ] Plural (-lar/-ler)
-- [ ] Personal pronouns + to be
-- [ ] var / yok
-- [ ] Possessive suffixes
-- [ ] Locative case (-DA)
-- [ ] Dative case (-(y)A)
-- [ ] Present continuous (-(I)yor)
-- [ ] Numbers
-- [ ] Question words
-
-### A2
-- [ ] Simple past (-DI)
-- [ ] Evidential past (-mIş)
-- [ ] Future (-AcAk)
-- [ ] Ablative case (-DAn)
-- [ ] Accusative case (-(y)I)
-- [ ] Genitive case
-- [ ] Postpositions
-- [ ] Adjectives
-- [ ] Negation
-- [ ] Aorist
-- [ ] Obligation (-mAlI)
-- [ ] Time expressions
-
-### B1
-- [ ] Ability (-(y)Abil-)
-- [ ] Conditional (-sA)
-- [ ] Causative voice
-- [ ] Passive voice
-- [ ] Reflexive / reciprocal
-- [ ] Compound tenses
-- [ ] Verbal nouns
-- [ ] Converbs / gerunds
-- [ ] Reported speech
-- [ ] Advanced postpositions
-
-### B2
-- [ ] Participial relative clauses
-- [ ] Nominalization
-- [ ] Subjunctive / optative
-- [ ] Modality
-- [ ] Complex postpositions
-- [ ] Registers
-- [ ] Discourse markers
-- [ ] Word derivation
+- *(none yet)*
 
 ---
 
