@@ -26,6 +26,6 @@ Drop OCR text files here for processing with `/scan`.
 
 ## Tips
 
-- Turkish OCR commonly misreads: ş→s, ğ→g, ı→i, ö→o, ü→u. Don't worry — `/scan` corrects these.
+- Turkish OCR commonly drops diacritics: ş appears as s, ğ as g, ı as i, ö as o, ü as u. Don't worry — `/scan` corrects these.
 - Longer texts are fine. `/scan` will prioritize the most pedagogically useful material.
 - Keep scanned files in this folder as a record of your real-world Turkish encounters.

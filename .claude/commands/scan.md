@@ -5,7 +5,7 @@ The text to process is either: $ARGUMENTS — or, if no argument is given, read 
 ## Instructions
 
 ### Step 1 — Clean the Text
-OCR output often has errors. Make a best-effort correction of obvious OCR artifacts (misread characters like ş→s, ğ→g, ı→i, ö→o, ü→u are common OCR failures in Turkish). Show the corrected text.
+OCR output often has errors with Turkish diacritics. Common OCR misreads: **s** for ş, **g** for ğ, **i** for ı, **o** for ö, **u** for ü (diacritics get dropped). Make a best-effort correction of these and other obvious OCR artifacts. Show the corrected text.
 
 ### Step 2 — Translate
 Provide a natural English translation of the full text.
