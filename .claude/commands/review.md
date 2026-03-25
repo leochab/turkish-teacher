@@ -12,13 +12,12 @@ Run a spaced repetition vocabulary review session.
    - Accept: translation, example sentence, or morpheme breakdown (any demonstrates recall)
    - Give feedback: correct / close / incorrect, with the full answer and example sentence
 
-4. After all cards are reviewed, apply **SM-2-inspired scheduling**:
-   - **Correct with ease (recalled immediately):** Next review in current interval × 2.5, increase Ease by 0.1 (max 5)
-   - **Correct with effort (took a moment):** Next review in current interval × 2.0, Ease unchanged
-   - **Incorrect:** Reset interval to 1 day, decrease Ease by 0.2 (min 1)
+4. After **each card** is reviewed, immediately apply **SM-2-inspired scheduling** and update the vocab file:
+   - **Correct with ease (recalled immediately):** Interval = current Interval × 2.5, Ease + 0.1 (max 5)
+   - **Correct with effort (took a moment):** Interval = current Interval × 2.0, Ease unchanged
+   - **Incorrect:** Interval = 1 day, Ease - 0.2 (min 1)
    - Minimum interval: 1 day. Starting interval for new words: 1 day.
-
-5. Update the **Next review** and **Ease** fields in the appropriate `vocab/*.md` files for every word reviewed.
+   - Update **Next review**, **Interval**, and **Ease** in the word's `vocab/*.md` entry immediately after scoring — do not batch updates to the end. This ensures progress is saved if the session is interrupted.
 
 6. End with a **session summary**:
    - X words reviewed
