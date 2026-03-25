@@ -33,10 +33,11 @@
 
 ## What I've Covered
 
-> Completion is tracked in `curriculum/index.md`. See the ✓ column there for the full list.
-> Below, note only topics that need extra review or that were partially covered.
+> **Automatic tracking:** Topic completion is tracked in `curriculum/index.md` (✓ column). Claude marks topics there automatically after each `/lesson`. Do not duplicate that here.
+>
+> **This section is manual only.** Use it to flag topics you want to revisit, partially understood concepts, or anything that needs a follow-up lesson. Claude does not write here automatically.
 
-- *(none yet)*
+- *(nothing flagged yet)*
 
 ---
 
