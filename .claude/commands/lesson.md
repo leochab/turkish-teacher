@@ -52,7 +52,17 @@ After completing the lesson exercises and any follow-up questions:
    - If a match is found, add ✓ in the first (`✓`) column of that row.
    - If no match is found, do NOT guess or mark a different row. Instead, note at the end of your session close output: "Could not find '[topic]' in curriculum/index.md — please mark it manually."
 
-2. **Write a session log entry** in `progress/learner.md` under **Session Log**:
+2. **Check for level-up** immediately after marking the ✓:
+   - Count the total topics and the ✓-marked topics in the current level's section (A1 has 12, A2 has 12, B1 has 10, B2 has 8, C1 has 5).
+   - If **all topics in the level are now checked**, announce the milestone prominently:
+     ```
+     🎉 Level complete! You've finished [Level] — [Level "Can do" summary from curriculum/index.md].
+     You're now ready for [Next Level]. Next up: [first topic of next level].
+     ```
+   - Then update the **Current CEFR level** field in `progress/learner.md` to the next level.
+   - If not all topics are checked, show quiet progress: "([N]/[Total] topics complete in [Level])"
+
+3. **Write a session log entry** in `progress/learner.md` under **Session Log**:
    ```
    | YYYY-MM-DD | /lesson [topic] | [comma-separated new vocab if any] | [one-line note e.g. "struggled with back vowel harmony"] |
    ```
