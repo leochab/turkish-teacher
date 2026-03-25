@@ -106,8 +106,24 @@ When adding words to the vocab bank, use this format in the appropriate `vocab/*
 
 ## Session Closing
 
-At the end of each session:
-1. Summarize what was covered.
-2. Note any recurring mistakes in `progress/learner.md` under **Recurring Mistakes**.
-3. Update **Next review** dates for any words drilled.
-4. Suggest what to work on next.
+Skill commands (`/lesson`, `/quiz`, `/review`, `/sohbet`, `/scan`) handle their own session writes. This section governs **free-form conversations** — any exchange where no skill was invoked.
+
+When the learner says goodbye, thanks you, or clearly ends the session, and no skill was used during the conversation:
+
+1. **Summarize** what was discussed in one sentence.
+
+2. **Write a session log entry** in `progress/learner.md` under **Session Log** (no permission needed):
+   ```
+   | YYYY-MM-DD | free-form chat | [vocab added, or —] | [topic(s) discussed] |
+   ```
+
+3. **Update Recurring Mistakes** in `progress/learner.md` if any errors were corrected during the conversation:
+   - Scan the existing table for a row with the same **Error** and **Rule** before appending — skip duplicates.
+   - Append only new patterns:
+     ```
+     | YYYY-MM-DD | [their form] | [correct form] | [rule violated] |
+     ```
+
+4. **Suggest** what to work on next — a `/lesson`, `/review`, or `/quiz` that follows from the conversation.
+
+Do not write these updates for sessions where a skill was already invoked (the skill's own session close handles it).
