@@ -33,15 +33,10 @@ Each word entry follows this structure:
 | 2 | Shaky — review frequently |
 | 1 | Difficult — review tomorrow |
 
-## Review Scheduling (FSRS-inspired)
+## Review Scheduling
 
-The `/review` command manages scheduling. Intervals grow based on Ease:
-- Ease 5: interval × 2.5
-- Ease 4: interval × 2.0
-- Ease 3: interval × 1.5
-- Ease 2: interval × 1.2
-- Ease 1: reset to 1 day
+The `/review` command is the **canonical source** for the scheduling algorithm (see `.claude/commands/review.md`). Do not duplicate the formula here.
 
-New words start at: Next review = tomorrow, Ease = 3, Interval = 1 day.
+New words start at: **Next review = tomorrow, Ease = 3, Interval = 1 day.**
 
-> **Important:** The `Interval` field must be updated alongside `Next review` after every review session. The `/review` command is the canonical source for the scheduling algorithm.
+> The `Interval` field must be updated alongside `Next review` after every review session.

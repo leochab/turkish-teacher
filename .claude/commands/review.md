@@ -12,7 +12,7 @@ Run a spaced repetition vocabulary review session.
    - Accept: translation, example sentence, or morpheme breakdown (any demonstrates recall)
    - Give feedback: correct / close / incorrect, with the full answer and example sentence
 
-4. After all cards are reviewed, apply **FSRS-style scheduling**:
+4. After all cards are reviewed, apply **SM-2-inspired scheduling**:
    - **Correct with ease (recalled immediately):** Next review in current interval × 2.5, increase Ease by 0.1 (max 5)
    - **Correct with effort (took a moment):** Next review in current interval × 2.0, Ease unchanged
    - **Incorrect:** Reset interval to 1 day, decrease Ease by 0.2 (min 1)
