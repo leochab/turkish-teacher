@@ -74,6 +74,8 @@ This is a **one-way push**: vocab bank → Anki. The local `vocab/*.md` files re
 
 > Words are only pushed once. Running `/anki-sync` again skips cards already in Anki.
 
+> **Don't use Anki?** Remove the `mcpServers` block from `.claude/settings.json` to prevent Claude Code from attempting to load the Anki MCP server on startup.
+
 ---
 
 ## OCR Workflow (with Handy or similar)
