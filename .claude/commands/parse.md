@@ -44,5 +44,15 @@ Use a clean, readable format. For complex words, use a table:
 
 **Full gloss:** ev-ler-iniz-den = house-PL-2PL.POSS-ABL = "from your houses"
 
+## Vocab Bank Offer
+
+After completing the breakdown, check `progress/learner.md` for the learner's current level. Then:
+
+- For any word the learner is unlikely to know at their level, offer to add it to the vocab bank in the format defined in CLAUDE.md.
+- Ask once: "Want me to add [word(s)] to your vocab bank?" — do not ask per-word.
+- If yes, append to the appropriate `vocab/*.md` file (create the file if no suitable one exists).
+
+Do not write a session log entry. `/parse` is a lookup tool, often called mid-lesson or mid-conversation — logging every invocation would flood the session history.
+
 ## Tone
 Be precise and educational. This is a learning tool — explain every choice, don't just label it.
