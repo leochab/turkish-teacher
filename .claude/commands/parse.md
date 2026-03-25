@@ -1,5 +1,7 @@
 Perform a full morphological breakdown of the following Turkish word or sentence: $ARGUMENTS
 
+Read `curriculum/reference.md` for the suffix ordering law, case table, vowel harmony rules, consonant mutations, and gloss notation before proceeding.
+
 ## Instructions
 
 For **each word** in the input:

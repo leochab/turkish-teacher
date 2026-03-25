@@ -35,44 +35,7 @@ If `progress/learner.md` doesn't exist yet, ask the learner to fill in the templ
 
 ## Turkish Linguistic Reference
 
-### The Suffix Ordering Law
-For **nouns**: Root → Derivational → Plural (-lar/-ler) → Possessive → Case
-For **verbs**: Root → Derivational → Voice → Negation → Tense/Aspect/Mood → Person
-
-### The 6 Cases
-| Case | Suffix | Meaning | Example |
-|------|--------|---------|---------|
-| Nominative | — | Subject / unmarked | ev (house) |
-| Accusative | -(y)ı/i/u/ü | Definite direct object | evi (the house, as object) |
-| Dative | -(y)a/e | To / toward | eve (to the house) |
-| Locative | -da/de | At / in / on | evde (in the house) |
-| Ablative | -dan/den | From / out of | evden (from the house) |
-| Genitive | -(n)ın/in/un/ün | Of / belonging to | evin (of the house) |
-
-### Vowel Harmony
-Two rules govern which vowel form a suffix takes:
-
-**2-way (a/e):** If the last vowel in the stem is a back vowel (a, ı, o, u) → use **a**. If front (e, i, ö, ü) → use **e**.
-
-**4-way (ı/i/u/ü):** Match both backness and rounding:
-| Last vowel in stem | Suffix vowel |
-|--------------------|-------------|
-| a, ı | ı |
-| e, i | i |
-| o, u | u |
-| ö, ü | ü |
-
-**Exceptions to know:** Loanwords (e.g., *saat*, *hukuk*, *alkol*) sometimes break harmony. Flag these explicitly when they arise.
-
-### Consonant Mutations
-- **Consonant softening:** Final k/ç/t/p soften to ğ/c/d/b before vowel-initial suffixes. Example: *kitap* → *kitabı*.
-- **Buffer consonants:** Insert -y- before vowel-initial suffixes after vowel-final stems. Insert -n- for possessive before case suffixes.
-
-### Word Order
-- Default: **Subject → Object → Verb** (SOV)
-- Modifiers precede what they modify (pre-nominal)
-- Relative clauses are participial and come *before* the noun: *gelen adam* (the man who came)
-- Information focus moves to the position immediately before the verb
+See `curriculum/reference.md` for the canonical reference (suffix ordering, cases, vowel harmony, consonant mutations, gloss notation). Read it when teaching grammar or parsing morphology — don't load it on every session.
 
 ## Available Skills (Slash Commands)
 
@@ -87,39 +50,9 @@ Two rules govern which vowel form a suffix takes:
 | `/dizi [subtitle line]` | Analyse TV dialogue — colloquial forms, cultural notes, morphology |
 | `/anki-sync [deck/filter]` | Push vocab bank to Anki desktop via AnkiConnect |
 
-## Project Folder Structure
-
-```
-turkish-lessons/
-├── CLAUDE.md               ← you are here (teacher brain)
-├── progress/
-│   └── learner.md          ← learner profile (fill this in first)
-├── vocab/
-│   └── *.md                ← vocabulary bank files by topic
-├── curriculum/
-│   ├── A1/ A2/ B1/ B2/ C1/ ← CEFR-aligned lesson plans
-│   └── index.md            ← curriculum map
-├── scans/
-│   └── *.txt               ← drop OCR text here for /scan to process
-└── .claude/
-    └── commands/           ← skill definitions
-```
-
 ## Vocabulary Bank Format
 
-When adding words to the vocab bank, use this format in the appropriate `vocab/*.md` file:
-
-```markdown
-## [turkish word]
-- **Root:** [root form]
-- **English:** [translation]
-- **Example:** [sentence in Turkish] — [English translation]
-- **Notes:** [suffix behavior, exceptions, collocations]
-- **Added:** [YYYY-MM-DD]
-- **Next review:** [YYYY-MM-DD]
-- **Interval:** [days, default 1]
-- **Ease:** [1-5, start at 3]
-```
+See `vocab/README.md` for the full entry format and SRS field definitions.
 
 ## Session Closing
 
