@@ -47,6 +47,7 @@ Lessons are generated on-the-fly by the `/lesson` command using this index for p
 
 ## B1 — Intermediate (~2,500 words | ~200 hours)
 
+**Prerequisite:** A2 complete.
 **Can do:** Express opinions, discuss plans and hypotheticals, understand the main points of news, write simple connected text.
 
 | ✓ | # | Topic |
@@ -66,6 +67,7 @@ Lessons are generated on-the-fly by the `/lesson` command using this index for p
 
 ## B2 — Upper Intermediate (~4,000 words | ~300 hours)
 
+**Prerequisite:** B1 complete.
 **Can do:** Follow extended speech, read Turkish news and literature, write detailed text on many subjects.
 
 | ✓ | # | Topic |
@@ -83,6 +85,7 @@ Lessons are generated on-the-fly by the `/lesson` command using this index for p
 
 ## C1 — Advanced (~6,000+ words | ~400+ hours)
 
+**Prerequisite:** B2 complete.
 **Can do:** Express ideas fluently, use language flexibly for social/academic/professional purposes, understand implicit meaning.
 
 | ✓ | # | Topic |
