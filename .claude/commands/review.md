@@ -12,12 +12,40 @@ Run a spaced repetition vocabulary review session.
    - Accept: translation, example sentence, or morpheme breakdown (any demonstrates recall)
    - Give feedback: correct / close / incorrect, with the full answer and example sentence
 
-4. After **each card** is reviewed, immediately apply **SM-2-inspired scheduling** and update the vocab file:
-   - **Correct with ease (recalled immediately):** Interval = current Interval × 2.5, Ease + 0.1 (max 5)
-   - **Correct with effort (took a moment):** Interval = current Interval × 2.0, Ease unchanged
-   - **Incorrect:** Interval = 1 day, Ease - 0.2 (min 1)
-   - Minimum interval: 1 day. Starting interval for new words: 1 day.
-   - Update **Next review**, **Interval**, and **Ease** in the word's `vocab/*.md` entry immediately after scoring — do not batch updates to the end. This ensures progress is saved if the session is interrupted.
+4. After **each card** is answered, prompt the learner to rate their recall — but pre-select the most likely rating based on observable signals in their response:
+
+   **Pre-selection rules:**
+   | Signal | Pre-select |
+   |--------|-----------|
+   | Correct, direct answer (no hedging, no false starts) | **Easy** |
+   | Correct, shows working or restates the rule | **Good** |
+   | Correct but hedged ("I think…", "maybe…", "is it…?") | **Hard** |
+   | Incorrect or blank | **Again** |
+
+   **Prompt format** (bold = pre-selected):
+   ```
+   ✓ Correct — [answer]
+
+   Again · Hard · Good · **Easy**   ← confirm or override
+   ```
+   or for incorrect:
+   ```
+   ✗ [correct answer] — [brief explanation]
+
+   **Again** · Hard · Good · Easy   ← confirm or override
+   ```
+   The learner confirms by pressing Enter or typing `y`, or overrides by typing the rating name.
+
+   **Scheduling by rating:**
+   | Rating | Interval | Ease |
+   |--------|----------|------|
+   | Again  | 1 day | − 0.2 (min 1) |
+   | Hard   | × 1.2 | − 0.15 (min 1) |
+   | Good   | × 2.0 | unchanged |
+   | Easy   | × 2.5 | + 0.1 (max 5) |
+
+   Minimum interval: 1 day. Starting interval for new words: 1 day.
+   Update **Next review**, **Interval**, and **Ease** in the word's `vocab/*.md` entry immediately after each rating — do not batch to the end.
 
 6. End with a **session summary**:
    - X words reviewed
