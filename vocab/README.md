@@ -19,6 +19,7 @@ Each word entry follows this structure:
 - **Notes:** [suffix behavior, vowel harmony exception, common collocations, register]
 - **Added:** [YYYY-MM-DD]
 - **Next review:** [YYYY-MM-DD]
+- **Interval:** [days, default 1]
 - **Ease:** [1–5, default 3]
 ```
 
@@ -42,3 +43,5 @@ The `/review` command manages scheduling. Intervals grow based on Ease:
 - Ease 1: reset to 1 day
 
 New words start at: Next review = tomorrow, Ease = 3, Interval = 1 day.
+
+> **Important:** The `Interval` field must be updated alongside `Next review` after every review session. The `/review` command is the canonical source for the scheduling algorithm.

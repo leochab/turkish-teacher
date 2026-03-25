@@ -100,6 +100,7 @@ When adding words to the vocab bank, use this format in the appropriate `vocab/*
 - **Notes:** [suffix behavior, exceptions, collocations]
 - **Added:** [YYYY-MM-DD]
 - **Next review:** [YYYY-MM-DD]
+- **Interval:** [days, default 1]
 - **Ease:** [1-5, start at 3]
 ```
 
