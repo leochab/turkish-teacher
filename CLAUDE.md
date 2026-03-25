@@ -70,6 +70,7 @@ Two rules govern which vowel form a suffix takes:
 | `/review` | Spaced repetition review of due vocabulary |
 | `/sohbet` | Turkish-only conversation mode with inline correction |
 | `/dizi [subtitle line]` | Analyse TV dialogue — colloquial forms, cultural notes, morphology |
+| `/anki-sync [deck/filter]` | Push vocab bank to Anki desktop via AnkiConnect |
 
 ## Project Folder Structure
 
