@@ -28,6 +28,8 @@ A Claude Code-powered Turkish language learning environment. Open this folder in
 | `/quiz` | 10-question quiz based on your level and weak spots |
 | `/review` | Spaced repetition review of vocabulary due today |
 | `/sohbet [scenario]` | Turkish conversation mode with inline corrections |
+| `/dizi [subtitle line]` | Analyse TV dialogue — colloquial forms, cultural notes, morphology |
+| `/anki-sync [filter]` | Push vocab bank to Anki desktop (requires setup below) |
 
 **Examples:**
 ```
@@ -36,7 +38,39 @@ A Claude Code-powered Turkish language learning environment. Open this folder in
 /scan scans/2026-03-25-menu.txt
 /quiz vowel harmony
 /sohbet ordering coffee at a café
+/dizi "Dur bir dakika, ne diyorsun?"
+/anki-sync
 ```
+
+---
+
+## Anki Integration (Optional)
+
+Sync your vocab bank to Anki for mobile review on AnkiDroid or AnkiMobile.
+
+### One-time setup
+
+1. **Install Anki desktop** — [ankiweb.net](https://apps.ankiweb.net)
+
+2. **Install the AnkiConnect add-on** inside Anki:
+   - Open Anki → Tools → Add-ons → Get Add-ons
+   - Enter code **`2055492155`**
+   - Restart Anki
+
+3. **Verify AnkiConnect is running** — with Anki open, visit [http://localhost:8765](http://localhost:8765) in your browser. You should see `"AnkiConnect v.6"` (or similar). If the page doesn't load, Anki isn't running or the add-on isn't installed.
+
+4. **Sync to AnkiWeb** (optional, for mobile) — in Anki: File → Sync. Then install AnkiDroid (Android) or AnkiMobile (iOS) and log in to the same AnkiWeb account.
+
+### Usage
+
+With Anki open, run:
+```
+/anki-sync
+```
+
+This is a **one-way push**: vocab bank → Anki. The local `vocab/*.md` files remain the source of truth for scheduling. Anki is purely for mobile review convenience.
+
+> Words are only pushed once. Running `/anki-sync` again skips cards already in Anki.
 
 ---
 
