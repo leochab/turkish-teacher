@@ -8,7 +8,13 @@ If no argument is given, ask the learner to paste the subtitle or dialogue line 
 
 ### Step 1 — Display and Normalise
 
-Show the original line as given. If the learner has copied a subtitle with encoding issues or missing diacritics (common when copy-pasting from subtitle files), make a best-effort correction — note any changes made.
+Show the original line as given. Then handle these TV-specific artefacts before proceeding:
+
+- **Encoding issues:** `.srt` and `.ass` subtitle files often produce mojibake for Turkish diacritics (ş→s, ğ→g, ı→i, ö→o, ü→u). Correct silently and note any changes.
+- **Truncated lines:** If the line ends with `—` or mid-word (e.g. *"Ama bu—"*), flag it as subtitle cut-off. Analyse what's there; do not guess the rest.
+- **Subtitle metadata:** Strip any leading timestamps, speaker labels in brackets (e.g. `[ALİ]`), or SDH annotations (e.g. `[müzik]`) — note who is speaking if a label was present, as register often differs by character.
+- **Multi-speaker exchanges:** If the learner pastes more than one line, treat each speaker's turn separately in Steps 3–4, since register and grammar often differ between characters.
+- **Dubbed vs. original Turkish:** If the show is a dub (originally non-Turkish), note this — dubbed Turkish tends to be stiffer and less colloquial than original-production dialogue.
 
 If the learner provides show/episode context (e.g. "Aile, S1E3"), note it. If not, leave context blank.
 
@@ -82,7 +88,7 @@ After completing the analysis (and saving any vocab the learner chose), **automa
 
 **Session Log** — append one row:
 ```
-| YYYY-MM-DD | /dizi [show or first 4 words of line] | [vocab added, or —] | [dominant grammar point noted] |
+| YYYY-MM-DD | /dizi [show name or first 4 words of line] | [comma-separated vocab added, or —] | [grammar point from Step 6, e.g. "aorist vs progressive" or "dative postposition"] |
 ```
 
 ## Tone
