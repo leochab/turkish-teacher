@@ -17,10 +17,11 @@ Run a spaced repetition vocabulary review session.
    **Pre-selection rules:**
    | Signal | Pre-select |
    |--------|-----------|
-   | Correct, direct answer (no hedging, no false starts) | **Easy** |
-   | Correct, shows working or restates the rule | **Good** |
-   | Correct but hedged ("I think…", "maybe…", "is it…?") | **Hard** |
+   | Correct, short direct answer | **Easy** |
+   | Correct, longer answer that shows working or reasoning | **Good** |
    | Incorrect or blank | **Again** |
+
+   Hard is never pre-selected — the learner can choose it manually to override Good or Easy.
 
    **Prompt format** (bold = pre-selected):
    ```
