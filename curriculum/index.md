@@ -19,7 +19,7 @@ Lessons are generated on-the-fly by the `/lesson` command using this index for p
 | | 8 | Locative case (-DA) | 04 |
 | | 9 | Dative case (-(y)A) | 04 |
 | | 10 | Present continuous tense (-(I)yor) | 05 |
-| | 11 | Numbers 1-1000 | 03 |
+| | 11 | Numbers 1-1000 | 01 |
 | | 12 | Question words (ne, kim, nerede, nasıl...) | 10 |
 
 ---
@@ -70,16 +70,16 @@ Lessons are generated on-the-fly by the `/lesson` command using this index for p
 **Prerequisite:** B1 complete.
 **Can do:** Follow extended speech, read Turkish news and literature, write detailed text on many subjects.
 
-| ✓ | # | Topic |
-|---|---|-------|
-| | 1 | Participial relative clauses (-An, -DIk, -AcAk) |
-| | 2 | Nominalization (-DIk + possessive) |
-| | 3 | Subjunctive / optative (-A, -sIn) |
-| | 4 | Inferential and speculative modality |
-| | 5 | Complex postpositional phrases |
-| | 6 | Registers: formal vs. colloquial |
-| | 7 | Discourse markers (yani, işte, ki...) |
-| | 8 | Word derivation patterns |
+| ✓ | # | Topic | Prerequisites |
+|---|---|-------|--------------|
+| | 1 | Participial relative clauses (-An, -DIk, -AcAk) | — |
+| | 2 | Nominalization (-DIk + possessive) | B2/01 |
+| | 3 | Subjunctive / optative (-A, -sIn) | — |
+| | 4 | Inferential and speculative modality | — |
+| | 5 | Complex postpositional phrases | — |
+| | 6 | Registers: formal vs. colloquial | — |
+| | 7 | Discourse markers (yani, işte, ki...) | — |
+| | 8 | Word derivation patterns | — |
 
 ---
 
