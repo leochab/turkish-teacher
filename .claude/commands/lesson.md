@@ -46,7 +46,11 @@ One sentence on what topic naturally follows this lesson and why.
 
 After completing the lesson exercises and any follow-up questions:
 
-1. **Mark the topic complete** in `curriculum/index.md` — find the row matching this topic and add ✓ in the first column.
+1. **Mark the topic complete** in `curriculum/index.md`:
+   - Read the file and scan the Topic column for a match.
+   - Match loosely: ignore case, ignore suffixes in parentheses (e.g. "Dative case" matches "Dative case (-(y)A)"), treat hyphens and spaces as equivalent.
+   - If a match is found, add ✓ in the first (`✓`) column of that row.
+   - If no match is found, do NOT guess or mark a different row. Instead, note at the end of your session close output: "Could not find '[topic]' in curriculum/index.md — please mark it manually."
 
 2. **Write a session log entry** in `progress/learner.md` under **Session Log**:
    ```
