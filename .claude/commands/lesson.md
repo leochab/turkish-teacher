@@ -37,7 +37,7 @@ Give 5 practice exercises appropriate to the learner's level:
 - Give answers at the end under a "---" separator so the learner can self-check
 
 **Vocabulary**
-List any new words introduced in this lesson in the vocab bank format from CLAUDE.md. After the lesson, ask the learner if they want these added to their vocab bank.
+List any new words introduced in this lesson. After the lesson, ask the learner if they want these added to their vocab bank. If yes, add them to `vocab/vocab.json` following the format in `vocab/README.md`.
 
 **What's Next**
 One sentence on what topic naturally follows this lesson and why.

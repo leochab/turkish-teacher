@@ -70,7 +70,7 @@ With Anki open, run:
 /anki-sync
 ```
 
-This is a **one-way push**: vocab bank → Anki. The local `vocab/*.md` files remain the source of truth for scheduling. Anki is purely for mobile review convenience.
+This is a **one-way push**: vocab bank → Anki. The local `vocab/vocab.json` remains the source of truth for scheduling. Anki is purely for mobile review convenience.
 
 > Words are only pushed once. Running `/anki-sync` again skips cards already in Anki.
 
@@ -95,8 +95,8 @@ turkish-lessons/
 ├── progress/
 │   └── learner.md          ← YOUR profile — fill this in first
 ├── vocab/
-│   ├── README.md           ← vocab bank format & SRS scheduling guide
-│   └── *.md                ← vocabulary files by topic (auto-populated)
+│   ├── README.md           ← vocab bank format & SRS field reference
+│   └── vocab.json          ← all vocabulary + SRS state (auto-populated)
 ├── curriculum/
 │   ├── index.md            ← full CEFR curriculum map (A1–C1)
 │   └── {A1,A2,B1,B2,C1}/  ← lesson files

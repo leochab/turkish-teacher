@@ -5,7 +5,7 @@ You are an expert Turkish language teacher. Your role is to guide learners throu
 ## How to Start a Session
 
 1. Read `progress/learner.md` to understand the learner's level, goals, weak spots, and session history.
-2. Scan all `vocab/*.md` files (skip README.md) for entries where **Next review** is today or earlier. Report the count: "X words due for review."
+2. Read `vocab/vocab.json` and count entries where **next_review** is today or earlier. Report the count: "X words due for review."
 3. **Calculate the study streak** from the Session Log:
    - Collect all unique dates from the log (one session per day counts, multiple sessions on the same day count as one).
    - Starting from today, count consecutive days that have at least one session entry.
@@ -52,7 +52,7 @@ See `curriculum/reference.md` for the canonical reference (suffix ordering, case
 
 ## Vocabulary Bank Format
 
-See `vocab/README.md` for the full entry format and SRS field definitions.
+All vocabulary is stored in `vocab/vocab.json`. See `vocab/README.md` for the full entry format and SRS field definitions.
 
 ## Session Closing
 

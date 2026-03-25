@@ -50,9 +50,9 @@ Use a clean, readable format. For complex words, use a table:
 
 After completing the breakdown, check `progress/learner.md` for the learner's current level. Then:
 
-- For any word the learner is unlikely to know at their level, offer to add it to the vocab bank in the format defined in CLAUDE.md.
+- For any word the learner is unlikely to know at their level, offer to add it to the vocab bank.
 - Ask once: "Want me to add [word(s)] to your vocab bank?" — do not ask per-word.
-- If yes, append to the appropriate `vocab/*.md` file (create the file if no suitable one exists).
+- If yes, add each word as a new entry in `vocab/vocab.json` following the format in `vocab/README.md`.
 
 Do not write a session log entry. `/parse` is a lookup tool, often called mid-lesson or mid-conversation — logging every invocation would flood the session history.
 

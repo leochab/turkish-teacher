@@ -18,17 +18,11 @@ Before doing anything else, call a lightweight AnkiConnect method (e.g. `deckNam
 - If the call **succeeds**: proceed to Step 1.
 - If the call **fails**: stop immediately and tell the learner: "Anki doesn't appear to be running. Open Anki desktop and try again." Do not read vocab files or write a session log.
 
-### Step 1 — Read Vocab Files
+### Step 1 — Read Vocab
 
-Read all files in `vocab/`. Skip `README.md`. For each word entry (identified by a `## [word]` heading), collect:
-- Turkish word
-- Root
-- English translation
-- Example sentence (Turkish)
-- Example sentence (English)
-- Notes
+Read `vocab/vocab.json`. For each entry collect: Turkish word (key), root, english, example_tr, example_en, notes, topic.
 
-If no word entries exist (only README), report "No vocabulary to sync yet — add words via /lesson or /review first" and stop. Do not write a session log.
+If the file is empty (`{}`), report "No vocabulary to sync yet — add words via /lesson or /review first" and stop. Do not write a session log.
 
 ### Step 2 — Determine Scope
 

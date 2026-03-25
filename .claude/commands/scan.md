@@ -28,7 +28,7 @@ Pick 2-3 interesting grammar points visible in the text. For each:
 - Connect it to what the learner has already covered (check `progress/learner.md`)
 
 ### Step 5 — Vocab Bank Update
-Format the new vocabulary words in the vocab bank format defined in CLAUDE.md, ready to be added to the appropriate `vocab/*.md` file. Ask the learner which ones they want to save.
+List the new vocabulary words ready to save. Ask the learner which ones they want. If yes, add them to `vocab/vocab.json` following the format in `vocab/README.md`.
 
 ### Step 6 — Comprehension Questions
 Generate 3 comprehension questions about the text in Turkish (with English translations). Appropriate to the learner's level.

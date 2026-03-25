@@ -2,7 +2,7 @@ Run a spaced repetition vocabulary review session.
 
 ## Instructions
 
-1. Read all files in `vocab/` and collect every word entry where **Next review** date is today or earlier (compare against today's date).
+1. Read `vocab/vocab.json` and collect every entry where **next_review** is today or earlier.
 
 2. If no words are due, report this and show the next upcoming review dates. Offer to do an early review anyway.
 
@@ -46,7 +46,7 @@ Run a spaced repetition vocabulary review session.
    | Easy   | × 2.5 | + 0.1 (max 5) |
 
    Minimum interval: 1 day. Starting interval for new words: 1 day.
-   Update **Next review**, **Interval**, and **Ease** in the word's `vocab/*.md` entry immediately after each rating — do not batch to the end.
+   Update `next_review`, `interval`, and `ease` for the word in `vocab/vocab.json` immediately after each rating — do not batch to the end.
 
 6. End with a **session summary**:
    - X words reviewed

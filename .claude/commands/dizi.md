@@ -76,11 +76,11 @@ Pick 1-2 grammar points the learner may not have fully mastered (calibrate to th
 
 ### Step 7 — Vocab Bank Offer
 
-List any words from the line that are likely new for the learner's level. Format them in the vocab bank format from CLAUDE.md, ready to add to `vocab/`.
+List any words from the line that are likely new for the learner's level.
 
 Ask once: "Want me to add any of these to your vocab bank?" — do not ask per-word.
 
-If yes, append to the appropriate `vocab/*.md` file. Prefer an existing topic file; create a new one only if no suitable file exists.
+If yes, add them to `vocab/vocab.json` following the format in `vocab/README.md`.
 
 ### Step 8 — Session Log
 
