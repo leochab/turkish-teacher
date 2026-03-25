@@ -42,13 +42,7 @@ When the learner types `/stop` or says they want to finish:
 
 Then **automatically write to `progress/learner.md`** (no permission needed):
 
-5. **Recurring Mistakes** — for each grammar error corrected during the conversation:
-   - Scan the existing table for a row with the same **Error** and **Rule**. If found, skip — do not append a duplicate.
-   - If not found, append:
-     ```
-     | YYYY-MM-DD | [their form] | [correct form] | [rule: e.g. dative vowel harmony] |
-     ```
-   Update the **Summary** line if a pattern is visible across multiple errors.
+5. **Recurring Mistakes** — for each grammar error corrected during the conversation, follow `.claude/commands/_recurring-mistakes.md`.
 
 6. **Session Log** — append one row:
    ```

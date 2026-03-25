@@ -67,12 +67,7 @@ When the learner says goodbye, thanks you, or clearly ends the session, and no s
    | YYYY-MM-DD | free-form chat | [vocab added, or —] | [topic(s) discussed] |
    ```
 
-3. **Update Recurring Mistakes** in `progress/learner.md` if any errors were corrected during the conversation:
-   - Scan the existing table for a row with the same **Error** and **Rule** before appending — skip duplicates.
-   - Append only new patterns:
-     ```
-     | YYYY-MM-DD | [their form] | [correct form] | [rule violated] |
-     ```
+3. **Update Recurring Mistakes** — if any errors were corrected, follow `.claude/commands/_recurring-mistakes.md`.
 
 4. **Suggest** what to work on next — a `/lesson`, `/review`, or `/quiz` that follows from the conversation.
 

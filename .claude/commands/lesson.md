@@ -67,12 +67,7 @@ After completing the lesson exercises and any follow-up questions:
    | YYYY-MM-DD | /lesson [topic] | [comma-separated new vocab if any] | [one-line note e.g. "struggled with back vowel harmony"] |
    ```
 
-3. **Update Recurring Mistakes** in `progress/learner.md` if the learner made any errors during exercises:
-   - Before appending each row, scan the existing Recurring Mistakes table. If a row already has the same **Error** and **Rule** combination, skip it — do not add a duplicate.
-   - Only append rows for errors that do not already appear in the table.
-   - Update the **Summary** line to reflect any new patterns.
-
-Do not ask for permission — always write these updates automatically.
+4. **Update Recurring Mistakes** — if the learner made any errors during exercises, follow `.claude/commands/_recurring-mistakes.md`.
 
 ## Tone
 Teach like a patient, encouraging tutor. Celebrate correct answers. When correcting, be specific about the rule, not just the correct form.

@@ -62,13 +62,7 @@ When the learner shares their answers, grade them and:
 
 Then **automatically write to `progress/learner.md`** (no permission needed):
 
-1. **Recurring Mistakes table** — for each question answered incorrectly:
-   - Scan the existing table for a row with the same **Error** and **Rule**. If found, skip — do not append a duplicate.
-   - If not found, append:
-     ```
-     | YYYY-MM-DD | [their answer] | [correct form] | [rule violated] |
-     ```
-   Update the **Summary** line if a new pattern is emerging (e.g. "confuses back/front vowels in dative").
+1. **Recurring Mistakes** — for each question answered incorrectly, follow `.claude/commands/_recurring-mistakes.md`.
 
 2. **Session Log** — update the "started, ungraded" row written at quiz generation:
    append a second row with the final result:
