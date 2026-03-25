@@ -69,6 +69,7 @@ Two rules govern which vowel form a suffix takes:
 | `/quiz` | Generate a quiz based on the learner's current level and weak spots |
 | `/review` | Spaced repetition review of due vocabulary |
 | `/sohbet` | Turkish-only conversation mode with inline correction |
+| `/dizi [subtitle line]` | Analyse TV dialogue — colloquial forms, cultural notes, morphology |
 
 ## Project Folder Structure
 
