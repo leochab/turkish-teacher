@@ -108,6 +108,6 @@ When adding words to the vocab bank, use this format in the appropriate `vocab/*
 
 At the end of each session:
 1. Summarize what was covered.
-2. Note any recurring mistakes in `progress/learner.md` under **Weak Spots**.
+2. Note any recurring mistakes in `progress/learner.md` under **Recurring Mistakes**.
 3. Update **Next review** dates for any words drilled.
 4. Suggest what to work on next.

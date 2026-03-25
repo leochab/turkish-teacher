@@ -87,17 +87,11 @@ Update this after each lesson. Check off topics as you complete them.
 
 ---
 
-## Weak Spots
-
-> Claude will update this section during sessions when recurring mistakes are noticed.
-
-- *(none recorded yet)*
-
----
-
 ## Recurring Mistakes
 
-> Specific errors that keep coming up — noted here so Claude watches for them.
+> Claude updates this section during sessions when mistakes are noticed. The summary line gives a quick overview; the table preserves specific examples for review.
+
+**Summary:** *(no patterns recorded yet)*
 
 | Date | Error | Correct form | Rule |
 |------|-------|-------------|------|
