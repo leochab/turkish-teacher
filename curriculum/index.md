@@ -59,7 +59,7 @@ Lessons are generated on-the-fly by the `/lesson` command using this index for p
 | | 5 | Reflexive and reciprocal voices | — |
 | | 6 | Compound tenses (past in past, etc.) | — |
 | | 7 | Verbal nouns (-mA, -mAk, -Iş) | — |
-| | 8 | Converbs / gerunds (-ArAk, -Ip, -mAdAn) | B1/07 |
+| | 8 | Converbs / gerunds (-ArAk, -Ip, -mAdAn) | — |
 | | 9 | Reported speech | B1/07 |
 | | 10 | Common postpositions (için, kadar, gibi...) | — |
 
