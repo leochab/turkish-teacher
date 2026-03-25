@@ -2,10 +2,7 @@
   "mcpServers": {
     "anki": {
       "command": "npx",
-      "args": ["-y", "@ankimcp/anki-mcp-server"],
-      "env": {
-        "ANKICONNECT_URL": "http://localhost:8765"
-      }
+      "args": ["-y", "@ankimcp/anki-mcp-server", "--stdio", "--anki-connect", "http://localhost:8765"]
     }
   }
 }
