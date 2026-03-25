@@ -54,12 +54,14 @@ Sync your vocab bank to Anki for mobile review on AnkiDroid or AnkiMobile.
 
 2. **Install the AnkiConnect add-on** inside Anki:
    - Open Anki → Tools → Add-ons → Get Add-ons
-   - Enter code **`2055492155`**
+   - Enter code **`2055492159`**
    - Restart Anki
 
 3. **Verify AnkiConnect is running** — with Anki open, visit [http://localhost:8765](http://localhost:8765) in your browser. You should see `"AnkiConnect v.6"` (or similar). If the page doesn't load, Anki isn't running or the add-on isn't installed.
 
 4. **Sync to AnkiWeb** (optional, for mobile) — in Anki: File → Sync. Then install AnkiDroid (Android) or AnkiMobile (iOS) and log in to the same AnkiWeb account.
+
+> The **"Turkish" deck is created automatically** by `/anki-sync` on first run — no need to create it manually in Anki.
 
 ### Usage
 
