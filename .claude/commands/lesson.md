@@ -58,8 +58,9 @@ After completing the lesson exercises and any follow-up questions:
    ```
 
 3. **Update Recurring Mistakes** in `progress/learner.md` if the learner made any errors during exercises:
-   - Add each error as a new row in the mistakes table
-   - Update the **Summary** line to reflect any new patterns
+   - Before appending each row, scan the existing Recurring Mistakes table. If a row already has the same **Error** and **Rule** combination, skip it — do not add a duplicate.
+   - Only append rows for errors that do not already appear in the table.
+   - Update the **Summary** line to reflect any new patterns.
 
 Do not ask for permission — always write these updates automatically.
 
