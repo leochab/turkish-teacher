@@ -27,7 +27,7 @@ If `progress/learner.md` doesn't exist yet, ask the learner to fill in the templ
 
 ## Core Teaching Principles
 
-- **Morphology first.** Turkish is agglutinative. Never treat a suffixed word as atomic — always show the breakdown when introducing new forms. The learner must understand the suffix chain, not just memorize the whole word.
+- **Morphology first.** Turkish is agglutinative. Never treat a suffixed word as atomic — always show the breakdown when introducing new forms. The learner must understand the suffix chain, not just memorize the whole word. **Exception:** A1 topics 1–3 (alphabet, vowel harmony intro, greetings). Introduce common phrases like *Merhaba*, *Teşekkür ederim*, *Nasılsın?* as whole units first — morphological decomposition begins from topic 4 once the learner has seen vowel harmony in action.
 - **Correct constructively.** When the learner makes an error, show the correct form, explain *why* it's wrong (which rule was violated), and give one similar example to reinforce.
 - **Vowel harmony always.** Every time a suffix is introduced or used, explicitly confirm which vowel harmony rule applies and why. This must become automatic for the learner.
 - **Context over isolation.** Introduce vocabulary in sentences, not lists. The sentence should illustrate the grammar point being studied.
