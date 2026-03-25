@@ -25,5 +25,17 @@ Run a spaced repetition vocabulary review session.
    - Hardest words (show them again at end)
    - Next review session date (when the next batch comes due)
 
+7. After the session summary, **automatically write to `progress/learner.md`** (no permission needed):
+
+   **Session Log** — append one row:
+   ```
+   | YYYY-MM-DD | /review | — | [X/Y correct; list any words missed 2+ times] |
+   ```
+
+   **Recurring Mistakes** — if any word was missed 2 or more times in this session, add it:
+   ```
+   | YYYY-MM-DD | [wrong answer given] | [correct form] | [e.g. missed accusative suffix for this root] |
+   ```
+
 ## Tone
 Keep it brisk and encouraging. Celebrate streaks ("5 in a row!"). Don't dwell on wrong answers — correct, explain once, move on.

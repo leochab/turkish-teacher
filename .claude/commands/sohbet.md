@@ -39,3 +39,16 @@ When the learner types `/stop` or says they want to finish:
 2. List 3-5 new words or phrases from the conversation worth adding to the vocab bank.
 3. Note 1-2 grammar patterns the learner struggled with — suggest a `/lesson` for them.
 4. Ask if they want the new vocabulary added to `vocab/`.
+
+Then **automatically write to `progress/learner.md`** (no permission needed):
+
+5. **Recurring Mistakes** — for each grammar error corrected during the conversation, add a row:
+   ```
+   | YYYY-MM-DD | [their form] | [correct form] | [rule: e.g. dative vowel harmony] |
+   ```
+   Update the **Summary** line if a pattern is visible across multiple errors.
+
+6. **Session Log** — append one row:
+   ```
+   | YYYY-MM-DD | /sohbet [scenario] | [new words added if any] | [dominant grammar struggle if any] |
+   ```

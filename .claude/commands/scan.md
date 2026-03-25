@@ -33,6 +33,15 @@ Format the new vocabulary words in the vocab bank format defined in CLAUDE.md, r
 ### Step 6 — Comprehension Questions
 Generate 3 comprehension questions about the text in Turkish (with English translations). Appropriate to the learner's level.
 
+### Step 7 — Session Log
+
+After completing the scan (and any vocab the learner chose to save), **automatically write to `progress/learner.md`** (no permission needed):
+
+**Session Log** — append one row:
+```
+| YYYY-MM-DD | /scan [filename or description] | [comma-separated vocab added, or —] | [source type: menu/sign/news/etc.] |
+```
+
 ## Notes
 - If the text appears to be a menu, sign, or label: focus on practical vocabulary and register.
 - If it's literary or news text: focus on complex sentence structure and B2+ grammar.

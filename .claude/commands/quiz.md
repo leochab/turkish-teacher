@@ -52,5 +52,17 @@ After all 10 questions, add a `---` separator followed by the **Answer Key** wit
 
 When the learner shares their answers, grade them and:
 - Note which question types they struggled with
-- Suggest updating `progress/learner.md` weak spots if patterns emerge
 - Offer a brief targeted drill on any topic where they got 2+ wrong
+
+Then **automatically write to `progress/learner.md`** (no permission needed):
+
+1. **Recurring Mistakes table** — add a row for each question answered incorrectly:
+   ```
+   | YYYY-MM-DD | [their answer] | [correct form] | [rule violated] |
+   ```
+   Update the **Summary** line if a new pattern is emerging (e.g. "confuses back/front vowels in dative").
+
+2. **Session Log** — append one row:
+   ```
+   | YYYY-MM-DD | /quiz [topic if given] | — | [score X/10, weakest area noted] |
+   ```

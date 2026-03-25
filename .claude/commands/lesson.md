@@ -42,5 +42,22 @@ List any new words introduced in this lesson in the vocab bank format from CLAUD
 **What's Next**
 One sentence on what topic naturally follows this lesson and why.
 
+## Session Close (mandatory — run automatically at end of every lesson)
+
+After completing the lesson exercises and any follow-up questions:
+
+1. **Mark the topic complete** in `curriculum/index.md` — find the row matching this topic and add ✓ in the first column.
+
+2. **Write a session log entry** in `progress/learner.md` under **Session Log**:
+   ```
+   | YYYY-MM-DD | /lesson [topic] | [comma-separated new vocab if any] | [one-line note e.g. "struggled with back vowel harmony"] |
+   ```
+
+3. **Update Recurring Mistakes** in `progress/learner.md` if the learner made any errors during exercises:
+   - Add each error as a new row in the mistakes table
+   - Update the **Summary** line to reflect any new patterns
+
+Do not ask for permission — always write these updates automatically.
+
 ## Tone
 Teach like a patient, encouraging tutor. Celebrate correct answers. When correcting, be specific about the rule, not just the correct form.
