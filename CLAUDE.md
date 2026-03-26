@@ -46,7 +46,7 @@ See `curriculum/reference.md` for the canonical reference (suffix ordering, case
 | `/quiz` | Generate a quiz based on the learner's current level and weak spots |
 | `/review` | Spaced repetition review of due vocabulary |
 | `/sohbet` | Turkish-only conversation mode with inline correction |
-| `/anki-sync [deck/filter]` | Push vocab bank to Anki desktop via AnkiConnect |
+
 
 ## Vocabulary Bank Format
 
