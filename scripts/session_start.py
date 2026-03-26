@@ -15,6 +15,7 @@ from datetime import date, datetime, timedelta
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VOCAB_PATH = os.path.join(BASE, "vocab", "vocab.json")
 LEARNER_PATH = os.path.join(BASE, "progress", "learner.md")
+SESSION_LOG_HEADER = "## Session Log"
 
 
 # --- Vocab ---
@@ -39,7 +40,7 @@ def parse_session_log(text):
     dates = set()
     in_log = False
     for line in text.splitlines():
-        if "## Session Log" in line:
+        if SESSION_LOG_HEADER in line:
             in_log = True
             continue
         if not in_log:
@@ -62,7 +63,7 @@ def last_session_type(text):
     in_log = False
     last = ""
     for line in text.splitlines():
-        if "## Session Log" in line:
+        if SESSION_LOG_HEADER in line:
             in_log = True
             continue
         if not in_log:
