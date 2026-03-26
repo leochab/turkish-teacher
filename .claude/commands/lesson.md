@@ -62,10 +62,14 @@ After completing the lesson exercises and any follow-up questions:
    - Then update the **Current CEFR level** field in `progress/learner.md` to the next level.
    - If not all topics are checked, show quiet progress: "([N]/[Total] topics complete in [Level])"
 
-3. **Write a session log entry** in `progress/learner.md` under **Session Log**:
+3. **Write a session log entry** — run:
    ```
-   | YYYY-MM-DD | /lesson [topic] | [comma-separated new vocab if any] | [one-line note e.g. "struggled with back vowel harmony"] |
+   python3 scripts/session_log_append.py \
+     --command "/lesson [topic]" \
+     --vocab "[comma-separated new vocab, or omit for —]" \
+     --notes "[one-line note e.g. struggled with back vowel harmony]"
    ```
+   Show the script output to confirm.
 
 4. **Update Recurring Mistakes** — if the learner made any errors during exercises, follow `.claude/commands/_recurring-mistakes.md`.
 

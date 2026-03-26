@@ -44,7 +44,11 @@ Then **automatically write to `progress/learner.md`** (no permission needed):
 
 5. **Recurring Mistakes** — for each grammar error corrected during the conversation, follow `.claude/commands/_recurring-mistakes.md`.
 
-6. **Session Log** — append one row:
+6. **Session Log** — run:
    ```
-   | YYYY-MM-DD | /sohbet [scenario] | [new words added if any] | [dominant grammar struggle if any] |
+   python3 scripts/session_log_append.py \
+     --command "/sohbet [scenario]" \
+     --vocab "[new words added, or omit for —]" \
+     --notes "[dominant grammar struggle if any, or —]"
    ```
+   Show the script output to confirm.

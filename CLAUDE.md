@@ -63,9 +63,12 @@ When the learner says goodbye, thanks you, or clearly ends the session, and no s
 
 1. **Summarize** what was discussed in one sentence.
 
-2. **Write a session log entry** in `progress/learner.md` under **Session Log** (no permission needed):
+2. **Write a session log entry** — run (no permission needed):
    ```
-   | YYYY-MM-DD | free-form chat | [vocab added, or —] | [topic(s) discussed] |
+   python3 scripts/session_log_append.py \
+     --command "free-form chat" \
+     --vocab "[vocab added, or omit for —]" \
+     --notes "[topic(s) discussed]"
    ```
 
 3. **Update Recurring Mistakes** — if any errors were corrected, follow `.claude/commands/_recurring-mistakes.md`.

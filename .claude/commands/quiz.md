@@ -58,7 +58,10 @@ Then **automatically write to `progress/learner.md`** (no permission needed):
 
 1. **Recurring Mistakes** — for each question answered incorrectly, follow `.claude/commands/_recurring-mistakes.md`.
 
-2. **Session Log** — append one row:
+2. **Session Log** — run:
    ```
-   | YYYY-MM-DD | /quiz [topic if given] | — | [score X/10, weakest area noted] |
+   python3 scripts/session_log_append.py \
+     --command "/quiz [topic if given]" \
+     --notes "[score X/10; weakest area noted]"
    ```
+   Omit `--vocab` (defaults to —). Show the script output to confirm.

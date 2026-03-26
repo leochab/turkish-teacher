@@ -51,10 +51,13 @@ Run a spaced repetition vocabulary review session.
 
 7. After the session summary, **automatically write to `progress/learner.md`** (no permission needed):
 
-   **Session Log** — append one row:
+   **Session Log** — run:
    ```
-   | YYYY-MM-DD | /review | — | [X/Y correct; list any words missed 2+ times] |
+   python3 scripts/session_log_append.py \
+     --command "/review" \
+     --notes "[X/Y correct; missed: word1, word2]"
    ```
+   Omit `--vocab` (defaults to —). Show the script output to confirm.
 
    **Recurring Mistakes** — if any word was missed, follow `.claude/commands/_recurring-mistakes.md`.
 
