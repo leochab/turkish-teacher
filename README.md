@@ -33,10 +33,8 @@ A Claude Code-powered Turkish language learning environment. Open this folder in
 ```
 /lesson accusative case
 /parse evlerinizden
-/scan scans/2026-03-25-menu.txt
 /quiz vowel harmony
 /sohbet ordering coffee at a café
-/dizi "Dur bir dakika, ne diyorsun?"
 /anki-sync
 ```
 
@@ -76,14 +74,6 @@ This is a **one-way push**: vocab bank → Anki. The local `vocab/vocab.json` re
 
 ---
 
-## OCR Workflow (with Handy or similar)
-
-1. Photograph Turkish text (menu, sign, book page, subtitle)
-2. Run OCR → copy text to a `.txt` file in `scans/`
-3. Run `/scan` — Claude cleans the text, translates it, extracts vocabulary, spots grammar, and generates comprehension questions
-
----
-
 ## Folder Structure
 
 ```
@@ -98,9 +88,6 @@ turkish-lessons/
 ├── curriculum/
 │   ├── index.md            ← full CEFR curriculum map (A1–C1)
 │   └── {A1,A2,B1,B2,C1}/  ← lesson files
-├── scans/
-│   ├── README.md           ← OCR workflow guide
-│   └── *.txt               ← drop scanned text here
 └── .claude/
     └── commands/           ← slash command definitions
 ```
