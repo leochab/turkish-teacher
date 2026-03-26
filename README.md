@@ -24,14 +24,15 @@ A Claude Code-powered Turkish language learning environment. Open this folder in
 | `/parse [word]` | Full morpheme-by-morpheme breakdown of any Turkish word or sentence |
 | `/quiz` | 10-question quiz based on your level and weak spots |
 | `/review` | Spaced repetition review of vocabulary due today |
-| `/sohbet [scenario]` | Turkish conversation mode with inline corrections |
+| `/sohbet` | Turkish-only conversation mode with inline corrections |
+| `/help` | Show available commands and where to start |
 
 **Examples:**
 ```
 /lesson accusative case
 /parse evlerinizden
 /quiz vowel harmony
-/sohbet ordering coffee at a café
+/sohbet
 ```
 
 ---
