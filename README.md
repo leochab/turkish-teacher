@@ -52,9 +52,11 @@ turkish-lessons/
 │   └── vocab.json          ← all vocabulary + SRS state (auto-populated)
 ├── curriculum/
 │   ├── index.md            ← full CEFR curriculum map (A1–C1)
-│   └── {A1,A2,B1,B2,C1}/  ← lesson files
+│   └── reference.md        ← linguistic reference (cases, harmony, suffix ordering)
 ├── scripts/
-│   └── session_start.py    ← deterministic dashboard (due words, streak, suggestion)
+│   ├── session_start.py    ← deterministic dashboard (due words, streak, suggestion)
+│   ├── session_log_append.py ← appends a row to the session log in learner.md
+│   └── srs_update.py       ← applies SM-2 scheduling after each vocab card
 └── .claude/
     └── commands/           ← slash command definitions
 ```
@@ -81,6 +83,6 @@ This system is what makes Turkish feel hard at first and beautifully logical onc
 
 ## Contributing
 
-Lesson files live in `curriculum/{level}/`. Each lesson should follow the structure in `.claude/commands/lesson.md`. See `curriculum/index.md` for the full topic list and prerequisites.
+Lessons are delivered dynamically by the `/lesson` skill. The skill structure is defined in `.claude/commands/lesson.md`. See `curriculum/index.md` for the full topic list and prerequisites.
 
 PRs welcome.

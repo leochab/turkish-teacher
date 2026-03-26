@@ -26,7 +26,7 @@ If `progress/learner.md` is unfilled (all fields still contain placeholder text 
 
 2. Once all answers are collected, write them into `progress/learner.md`, replacing the placeholder fields. Do not ask for permission.
 
-3. Then continue with the normal session-start flow (vocab scan, streak, next action suggestion).
+3. Then continue with the normal session-start flow (due words, streak, next action suggestion).
 
 ## Core Teaching Principles
 
@@ -57,7 +57,7 @@ All vocabulary is stored in `vocab/vocab.json`. See `vocab/README.md` for the fu
 
 ## Session Closing
 
-Skill commands (`/lesson`, `/quiz`, `/review`, `/sohbet`, `/scan`) handle their own session writes. This section governs **free-form conversations** — any exchange where no skill was invoked.
+Skill commands (`/lesson`, `/quiz`, `/review`, `/sohbet`) handle their own session writes. This section governs **free-form conversations** — any exchange where no skill was invoked.
 
 When the learner says goodbye, thanks you, or clearly ends the session, and no skill was used during the conversation:
 

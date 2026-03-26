@@ -28,7 +28,7 @@ All vocabulary is stored in `vocab/vocab.json` as a single JSON object keyed by 
 |-------|------|-------------|
 | `root` | string | Base dictionary form |
 | `pos` | string | Part of speech: noun / verb / adjective / adverb / postposition |
-| `topic` | string | Semantic grouping (used by `/anki-sync [filter]`) |
+| `topic` | string | Semantic grouping (e.g. objects, verbs, food, travel) |
 | `english` | string | Primary translation |
 | `example_tr` | string | Example sentence in Turkish |
 | `example_en` | string | English translation of the example |
