@@ -37,16 +37,11 @@ Run a spaced repetition vocabulary review session.
    ```
    The learner confirms by pressing Enter or typing `y`, or overrides by typing the rating name.
 
-   **Scheduling by rating:**
-   | Rating | Interval | Ease |
-   |--------|----------|------|
-   | Again  | 1 day | − 0.2 (min 1) |
-   | Hard   | × 1.2 | − 0.15 (min 1) |
-   | Good   | × 2.0 | unchanged |
-   | Easy   | × 2.5 | + 0.1 (max 5) |
-
-   Minimum interval: 1 day. Starting interval for new words: 1 day.
-   Update `next_review`, `interval`, and `ease` for the word in `vocab/vocab.json` immediately after each rating — do not batch to the end.
+   Once the learner confirms or overrides the rating, run immediately (do not batch):
+   ```
+   python3 scripts/srs_update.py [word] [rating]
+   ```
+   Show the script output to the learner (e.g. "kitap: next review in 5 days").
 
 6. End with a **session summary**:
    - X words reviewed
