@@ -18,7 +18,9 @@ Requires: Python 3.6+ (stdlib only)
 
 import json
 import os
+import shutil
 import sys
+import tempfile
 from datetime import date, timedelta
 from math import ceil
 
@@ -87,8 +89,20 @@ def main():
     vocab[word]["ease"] = new_ease
     vocab[word]["next_review"] = next_review
 
-    with open(VOCAB_PATH, "w") as f:
-        json.dump(vocab, f, ensure_ascii=False, indent=2)
+    tmp_path = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w", dir=os.path.dirname(VOCAB_PATH),
+            delete=False, suffix=".tmp", encoding="utf-8"
+        ) as tmp:
+            json.dump(vocab, tmp, ensure_ascii=False, indent=2)
+            tmp_path = tmp.name
+        shutil.move(tmp_path, VOCAB_PATH)
+    except Exception as e:
+        print(f"Failed to write vocab.json: {e}", file=sys.stderr)
+        if tmp_path and os.path.exists(tmp_path):
+            os.unlink(tmp_path)
+        sys.exit(1)
 
     print(f"{word}: {rating} → next review in {new_interval} day{'s' if new_interval != 1 else ''} ({next_review})")
 
