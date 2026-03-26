@@ -12,6 +12,7 @@ A Claude Code-powered Turkish language learning environment. Open this folder in
    cd turkish-lessons
    claude
    ```
+   > Requires Python 3.6+ (stdlib only — no pip install needed). Verify with `python3 --version`.
 
 3. **Start learning**
    Just talk to Claude — or use one of the slash commands below.
@@ -52,6 +53,8 @@ turkish-lessons/
 ├── curriculum/
 │   ├── index.md            ← full CEFR curriculum map (A1–C1)
 │   └── {A1,A2,B1,B2,C1}/  ← lesson files
+├── scripts/
+│   └── session_start.py    ← deterministic dashboard (due words, streak, suggestion)
 └── .claude/
     └── commands/           ← slash command definitions
 ```
