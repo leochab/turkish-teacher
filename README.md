@@ -4,18 +4,21 @@ A Claude Code-powered Turkish language learning environment. Open this folder in
 
 ## Quick Start
 
-1. **Fill in your learner profile**
-   Open `progress/learner.md` and fill in your level, goals, and native language. Claude reads this at the start of every session to personalize the teaching.
+1. **Initialize your working files**
+   ```
+   bash scripts/bootstrap.sh
+   ```
+   This copies the clean templates into their working locations (`progress/learner.md`, `vocab/vocab.json`, `curriculum/index.md`). Safe to re-run — skips files that already exist.
+   > Requires Python 3.6+ (stdlib only — no pip install needed). Verify with `python3 --version`.
 
 2. **Open this folder in Claude Code**
    ```
    cd turkish-lessons
    claude
    ```
-   > Requires Python 3.6+ (stdlib only — no pip install needed). Verify with `python3 --version`.
 
 3. **Start learning**
-   Just talk to Claude — or use one of the slash commands below.
+   Just talk to Claude — it will walk you through filling in your profile on first launch, then start the session. Or jump straight to a slash command.
 
 ---
 
@@ -45,15 +48,20 @@ A Claude Code-powered Turkish language learning environment. Open this folder in
 turkish-lessons/
 ├── README.md               ← this file
 ├── CLAUDE.md               ← teacher persona (read by Claude automatically)
+├── templates/              ← clean copies; edit here to change structure
+│   ├── progress/learner.md
+│   ├── vocab/vocab.json
+│   └── curriculum/index.md
 ├── progress/
-│   └── learner.md          ← YOUR profile — fill this in first
+│   └── learner.md          ← YOUR profile (gitignored — init with bootstrap.sh)
 ├── vocab/
 │   ├── README.md           ← vocab bank format & SRS field reference
-│   └── vocab.json          ← all vocabulary + SRS state (auto-populated)
+│   └── vocab.json          ← all vocabulary + SRS state (gitignored)
 ├── curriculum/
-│   ├── index.md            ← full CEFR curriculum map (A1–C1)
+│   ├── index.md            ← topic completion tracker (gitignored)
 │   └── reference.md        ← linguistic reference (cases, harmony, suffix ordering)
 ├── scripts/
+│   ├── bootstrap.sh        ← init working files from templates/
 │   ├── session_start.py    ← deterministic dashboard (due words, streak, suggestion)
 │   ├── session_log_append.py ← appends a row to the session log in learner.md
 │   └── srs_update.py       ← applies SM-2 scheduling after each vocab card

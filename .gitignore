@@ -1,2 +1,8 @@
 .DS_Store
 *.log
+
+# Live learner data — personal progress, not committed
+# Edit templates/ to change structure; run scripts/bootstrap.sh to init
+progress/learner.md
+vocab/vocab.json
+curriculum/index.md
