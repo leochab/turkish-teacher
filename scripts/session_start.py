@@ -26,7 +26,10 @@ def count_due_words():
     except (FileNotFoundError, json.JSONDecodeError):
         return 0
     today = date.today().isoformat()
-    return sum(1 for v in vocab.values() if v.get("next_review", "9999") <= today)
+    return sum(
+        1 for v in vocab.values()
+        if isinstance(v.get("next_review"), str) and v["next_review"] <= today
+    )
 
 
 # --- Session log ---
