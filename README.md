@@ -4,21 +4,15 @@ A Claude Code-powered Turkish language learning environment. Open this folder in
 
 ## Quick Start
 
-1. **Initialize your working files**
-   ```
-   bash scripts/bootstrap.sh
-   ```
-   This copies the clean templates into their working locations (`progress/learner.md`, `vocab/vocab.json`, `curriculum/index.md`). Safe to re-run — skips files that already exist.
-   > Requires Python 3.6+ (stdlib only — no pip install needed). Verify with `python3 --version`.
-
-2. **Open this folder in Claude Code**
+1. **Open this folder in Claude Code**
    ```
    cd turkish-lessons
    claude
    ```
+   > Requires Python 3.6+ (stdlib only — no pip install needed). Verify with `python3 --version`.
 
-3. **Start learning**
-   Just talk to Claude — it will walk you through filling in your profile on first launch, then start the session. Or jump straight to a slash command.
+2. **Start learning**
+   Just talk to Claude — it will initialize your files, walk you through filling in your profile on first launch, then start the session. Or jump straight to a slash command.
 
 ---
 
