@@ -24,11 +24,9 @@ A Claude Code-powered Turkish language learning environment. Open this folder in
 |---------|-------------|
 | `/lesson [topic]` | Structured lesson on any grammar or vocabulary topic |
 | `/parse [word]` | Full morpheme-by-morpheme breakdown of any Turkish word or sentence |
-| `/scan` | Process OCR text from `scans/` — vocabulary, grammar, translation |
 | `/quiz` | 10-question quiz based on your level and weak spots |
 | `/review` | Spaced repetition review of vocabulary due today |
 | `/sohbet [scenario]` | Turkish conversation mode with inline corrections |
-| `/dizi [subtitle line]` | Analyse TV dialogue — colloquial forms, cultural notes, morphology |
 | `/anki-sync [filter]` | Push vocab bank to Anki desktop (requires setup below) |
 
 **Examples:**

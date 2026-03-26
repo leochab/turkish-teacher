@@ -43,11 +43,9 @@ See `curriculum/reference.md` for the canonical reference (suffix ordering, case
 |---------|-------------|
 | `/lesson [topic]` | Structured lesson on a grammar or vocabulary topic |
 | `/parse [word or sentence]` | Full morpheme-by-morpheme breakdown |
-| `/scan` | Process OCR text — breakdown, vocab extraction, grammar notes |
 | `/quiz` | Generate a quiz based on the learner's current level and weak spots |
 | `/review` | Spaced repetition review of due vocabulary |
 | `/sohbet` | Turkish-only conversation mode with inline correction |
-| `/dizi [subtitle line]` | Analyse TV dialogue — colloquial forms, cultural notes, morphology |
 | `/anki-sync [deck/filter]` | Push vocab bank to Anki desktop via AnkiConnect |
 
 ## Vocabulary Bank Format
