@@ -136,7 +136,9 @@ def suggest_next(due_count, last_date, session_type):
     if last_date and (today - last_date).days >= 3:
         return "/quiz  (check retention — 3+ days since last session)"
     if session_type and "/lesson" in session_type:
-        return f"/lesson  (continue from last session)"
+        topic = session_type.replace("/lesson", "").strip()
+        suffix = f" {topic}" if topic else ""
+        return f"/lesson{suffix}  (continue from last session)"
     return "/lesson  (start or continue a topic)"
 
 
