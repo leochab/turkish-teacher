@@ -46,12 +46,6 @@ Conjugate a given verb in the specified tense and person.
 
 Number each question clearly. Do NOT show answers inline.
 
-Before presenting the quiz, **write a session log entry** in `progress/learner.md` (no permission needed):
-```
-| YYYY-MM-DD | /quiz [topic if given] | — | started, ungraded |
-```
-This ensures the session is recorded even if the learner never submits answers.
-
 After all 10 questions, add a `---` separator followed by the **Answer Key** with brief explanations for each answer (not just the correct form — explain *why*).
 
 ### After Grading
@@ -64,8 +58,7 @@ Then **automatically write to `progress/learner.md`** (no permission needed):
 
 1. **Recurring Mistakes** — for each question answered incorrectly, follow `.claude/commands/_recurring-mistakes.md`.
 
-2. **Session Log** — update the "started, ungraded" row written at quiz generation:
-   append a second row with the final result:
+2. **Session Log** — append one row:
    ```
    | YYYY-MM-DD | /quiz [topic if given] | — | [score X/10, weakest area noted] |
    ```
