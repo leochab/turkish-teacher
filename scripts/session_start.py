@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Session start dashboard for turkish-lessons.
-Prints: due word count, study streak, next action suggestion.
+Prints: due word count, study streak, next action suggestion, top weak spots.
 Requires: Python 3.6+ (stdlib only)
 """
 
@@ -9,6 +9,7 @@ import json
 import os
 import re
 import sys
+from collections import Counter
 from datetime import date, datetime, timedelta
 
 
@@ -16,6 +17,7 @@ BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VOCAB_PATH = os.path.join(BASE, "vocab", "vocab.json")
 LEARNER_PATH = os.path.join(BASE, "progress", "learner.md")
 SESSION_LOG_HEADER = "## Session Log"
+MISTAKES_HEADER = "## Recurring Mistakes"
 
 
 # --- Vocab ---
@@ -127,6 +129,48 @@ def format_streak(streak, last_date):
     return f"🔥 {streak}-day streak — keep it going"
 
 
+# --- Weak spots ---
+
+def get_top_weak_spots(text, top_n=3):
+    """
+    Parse Recurring Mistakes table and return the top_n most frequent rules.
+    Returns list of (rule, count) tuples, or empty list if none recorded.
+    """
+    rules = []
+    in_section = False
+    in_table = False
+    past_separator = False
+
+    for line in text.splitlines():
+        if MISTAKES_HEADER in line:
+            in_section = True
+            continue
+        if not in_section:
+            continue
+        if line.startswith("##") and MISTAKES_HEADER not in line:
+            break
+        stripped = line.strip()
+        if not stripped.startswith("|"):
+            continue
+        if not in_table:
+            if re.search(r"\|\s*Rule\s*\|", stripped, re.IGNORECASE):
+                in_table = True
+            continue
+        if not past_separator:
+            if re.match(r"^\|[-| :]+\|$", stripped):
+                past_separator = True
+            continue
+        parts = [p.strip() for p in stripped.strip("|").split("|")]
+        if len(parts) < 4:
+            continue
+        rule = parts[3].strip()
+        if rule and rule not in ("", "—", "-"):
+            rules.append(rule)
+
+    counts = Counter(rules)
+    return counts.most_common(top_n)
+
+
 # --- Next action ---
 
 def suggest_next(due_count, last_date, session_type):
@@ -153,12 +197,16 @@ def main():
         dates = parse_session_log(learner)
         streak, last_date = calculate_streak(dates)
         session_type = last_session_type(learner)
+        weak_spots = get_top_weak_spots(learner)
     except FileNotFoundError:
-        dates, streak, last_date, session_type = [], 0, None, ""
+        dates, streak, last_date, session_type, weak_spots = [], 0, None, "", []
 
     print(f"{due} word{'s' if due != 1 else ''} due for review")
     print(format_streak(streak, last_date))
     print(f"Suggested: {suggest_next(due, last_date, session_type)}")
+    if weak_spots:
+        spots = "; ".join(f"{rule} (×{count})" for rule, count in weak_spots)
+        print(f"Top weak spots: {spots}")
 
 
 if __name__ == "__main__":
