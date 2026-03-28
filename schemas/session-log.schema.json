@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "session-log.schema.json",
   "title": "Session Log",
-  "description": "Flat array of session log entries as written by session_log_append.py.",
+  "description": "Forward-looking schema for a JSON-backed session log. NOTE: the current implementation stores session log entries as a Markdown table inside progress/learner.md (written by session_log_append.py). This schema defines the target shape for a future migration to a standalone JSON file.",
   "type": "array",
   "items": {
     "type": "object",
