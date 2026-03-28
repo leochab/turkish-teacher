@@ -47,7 +47,6 @@ turkish-teacher/
 ├── templates/              ← clean copies; edit here to change structure
 │   ├── progress/learner.md
 │   ├── vocab/vocab.json
-│   ├── curriculum/index.md
 │   └── curriculum/index.json
 ├── schemas/                ← JSON Schema Draft-07 files for all data structures
 ├── progress/
@@ -56,8 +55,7 @@ turkish-teacher/
 │   ├── README.md           ← vocab bank format & SRS field reference
 │   └── vocab.json          ← all vocabulary + SRS state (gitignored)
 ├── curriculum/
-│   ├── index.md            ← human-readable topic map (gitignored)
-│   ├── index.json          ← machine-readable topic completion tracker (gitignored)
+│   ├── index.json          ← topic map + completion tracker (gitignored)
 │   └── reference.md        ← linguistic reference (cases, harmony, suffix ordering)
 ├── scripts/
 │   ├── bootstrap.sh        ← init working files from templates/
@@ -73,7 +71,7 @@ turkish-teacher/
 
 ## Curriculum
 
-Full A1–C1 CEFR curriculum following the TOMER / Yunus Emre Institute progression. See `curriculum/index.json` for the machine-readable topic map with prerequisites; `curriculum/index.md` is the human-readable counterpart.
+Full A1–C1 CEFR curriculum following the TOMER / Yunus Emre Institute progression. See `curriculum/index.json` for the complete topic map with prerequisites.
 
 Progress is tracked automatically in `curriculum/index.json` — Claude marks topics complete after each `/lesson`.
 

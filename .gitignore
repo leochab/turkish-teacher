@@ -7,5 +7,4 @@ __pycache__/
 # Edit templates/ to change structure; run scripts/bootstrap.sh to init
 progress/learner.md
 vocab/vocab.json
-curriculum/index.md
 curriculum/index.json
