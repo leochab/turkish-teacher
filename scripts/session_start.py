@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Session start dashboard for turkish-lessons.
-Prints: due word count, study streak, next action suggestion.
+Prints: due word count, study streak, next action suggestion, top weak spots.
 Requires: Python 3.6+ (stdlib only)
 """
 
@@ -11,6 +11,9 @@ import re
 import sys
 from datetime import date, datetime, timedelta
 
+# Import shared parser from analyze_mistakes (same scripts/ directory)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from analyze_mistakes import rank_weak_spots, _recency_label  # noqa: E402
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VOCAB_PATH = os.path.join(BASE, "vocab", "vocab.json")
@@ -127,6 +130,13 @@ def format_streak(streak, last_date):
     return f"🔥 {streak}-day streak — keep it going"
 
 
+# --- Weak spots ---
+
+def get_top_weak_spots(text, top_n=3):
+    """Return top_n decay-weighted weak spots as (rule, score, last_days) tuples."""
+    return rank_weak_spots(text, top_n=top_n)
+
+
 # --- Next action ---
 
 def suggest_next(due_count, last_date, session_type):
@@ -153,12 +163,17 @@ def main():
         dates = parse_session_log(learner)
         streak, last_date = calculate_streak(dates)
         session_type = last_session_type(learner)
+        weak_spots = get_top_weak_spots(learner)
     except FileNotFoundError:
-        dates, streak, last_date, session_type = [], 0, None, ""
+        dates, streak, last_date, session_type, weak_spots = [], 0, None, "", []
 
     print(f"{due} word{'s' if due != 1 else ''} due for review")
     print(format_streak(streak, last_date))
     print(f"Suggested: {suggest_next(due, last_date, session_type)}")
+    if weak_spots:
+        print("Top weak spots:")
+        for rank, (rule, _score, last_days) in enumerate(weak_spots, start=1):
+            print(f"  {rank}. {rule}  (last: {_recency_label(last_days)})")
 
 
 if __name__ == "__main__":

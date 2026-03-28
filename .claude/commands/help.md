@@ -20,8 +20,9 @@ Show the learner what they can do and where to start.
      or `/quiz` on any topic to keep sharp."
    - If **no topics are checked yet**, suggest: `/lesson the Turkish alphabet`
 
-4. Run `python3 scripts/session_start.py` to get live vocab due count.
-   Use its output to determine whether to recommend `/review` first.
+4. Run `python3 scripts/session_start.py` and read its full output: vocab due count, streak, suggested next action, and top weak spots (if any recorded).
+   Use the vocab due count to determine whether to recommend `/review` first.
+   Include the weak spots in the help screen if any are shown.
 
 5. Count ✓ marks in the learner's current level section of `curriculum/index.md`
    to show progress as "X of Y topics complete in [Level]".
@@ -56,6 +57,10 @@ You have [N] word(s) due for review — run `/review` to clear them first, then 
 
 [If no vocab is due]:
 No vocab due today.
+
+[If weak spots shown in session_start.py output]:
+Top weak spots:
+[paste the ranked list from session_start.py here]
 
 Next lesson: **[next unchecked topic]** — `/lesson [topic name]`
 

@@ -7,6 +7,7 @@ When updating the **Recurring Mistakes** table in `progress/learner.md` after a 
    ```
    | YYYY-MM-DD | [their form] | [correct form] | [rule violated] |
    ```
+   For the rule name: scan the existing Rule column and reuse the closest matching name. Only coin a new name if nothing already in the table fits.
 3. After appending any new rows, update the **Summary** line above the table to reflect any emerging pattern (e.g. "consistently confuses back/front vowels in dative suffix").
 
 Do not ask for permission — write these updates automatically.
