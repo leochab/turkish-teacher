@@ -18,9 +18,11 @@ Run the onboarding flow to set up the learner profile.
    - "How would you rate your current Turkish level? (Complete beginner / A1 / A2 / B1 / B2 / C1)"
    - "How long have you been studying Turkish?"
    - "Why are you learning Turkish?"
-   - "What's your target level, and do you have a timeline?"
+   - "What's your target level? (e.g. B2 conversational fluency)"
+   - "Do you have a timeline? (e.g. planning a trip in 6 months — or skip)"
    - "What matters most to you — speaking, reading, writing, or a mix?"
    - "How long do you want sessions to be? (e.g. 20–30 min)"
+   - "What kind of sessions do you prefer — mostly grammar, mostly conversation, or a mix?"
    - "Do you prefer grammar rules explained explicitly, or would you rather learn through examples first?"
 
 3. Write answers into `progress/learner.md`, replacing the placeholder fields.
