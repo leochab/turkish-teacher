@@ -1,5 +1,7 @@
 .DS_Store
 *.log
+__pycache__/
+*.pyc
 
 # Live learner data — personal progress, not committed
 # Edit templates/ to change structure; run scripts/bootstrap.sh to init
