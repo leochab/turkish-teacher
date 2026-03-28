@@ -8,3 +8,4 @@ __pycache__/
 progress/learner.md
 vocab/vocab.json
 curriculum/index.md
+curriculum/index.json

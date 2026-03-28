@@ -54,15 +54,27 @@ One sentence on what topic naturally follows this lesson and why.
 
 After completing the lesson exercises and any follow-up questions:
 
-1. **Mark the topic complete** in `curriculum/index.md`:
-   - Read the file and scan the Topic column for a match.
-   - Match loosely: ignore case, ignore suffixes in parentheses (e.g. "Dative case" matches "Dative case (-(y)A)"), treat hyphens and spaces as equivalent.
-   - If a match is found, add ✓ in the first (`✓`) column of that row.
-   - If no match is found, do NOT guess or mark a different row. Instead, note at the end of your session close output: "Could not find '[topic]' in curriculum/index.md — please mark it manually."
+1. **Mark the topic complete** using `curriculum_query.py`:
+   - Identify the topic's level and number from `curriculum/index.json`.
+   - Run:
+     ```
+     python3 scripts/curriculum_query.py --mark [LEVEL] [NUMBER]
+     ```
+     Example: `python3 scripts/curriculum_query.py --mark A1 9`
+   - If the topic cannot be matched to a number, note: "Could not find '[topic]' in curriculum/index.json — please mark it manually with `--mark [LEVEL] [NUMBER]`."
 
-2. **Check for level-up** immediately after marking the ✓:
-   - Count the total topics and the ✓-marked topics in the current level's section (A1 has 12, A2 has 12, B1 has 10, B2 has 8, C1 has 5).
-   - If **all topics in the level are now checked**, announce the milestone prominently:
+2. **Check for level-up** immediately after marking complete:
+   - Run:
+     ```
+     python3 -c "
+     import sys; sys.path.insert(0, 'scripts')
+     from curriculum_query import count_complete, all_complete
+     done, total = count_complete('[LEVEL]')
+     print(f'{done}/{total}')
+     print('all' if all_complete('[LEVEL]') else 'not_all')
+     "
+     ```
+   - If **all topics in the level are now complete**, announce the milestone prominently:
      ```
      🎉 Level complete! You've finished [Level] — [Level "Can do" summary from curriculum/index.md].
      You're now ready for [Next Level]. Next up: [first topic of next level].
