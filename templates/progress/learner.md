@@ -33,7 +33,7 @@
 
 ## What I've Covered
 
-> **Automatic tracking:** Topic completion is tracked in `curriculum/index.md` (✓ column). Claude marks topics there automatically after each `/lesson`. Do not duplicate that here.
+> **Automatic tracking:** Topic completion is tracked in `curriculum/index.json` (`completed` boolean flag). Claude marks topics there automatically after each `/lesson`. Do not duplicate that here.
 >
 > **This section is manual only.** Use it to flag topics you want to revisit, partially understood concepts, or anything that needs a follow-up lesson. Claude does not write here automatically.
 
