@@ -133,6 +133,8 @@ def main():
 
     if args.level is not None:
         new_level = max(LEVEL_MIN, min(LEVEL_MAX, args.level))
+        if new_level != args.level:
+            print(f"Warning: --level {args.level} out of range; clamped to {new_level}.", file=sys.stderr)
     else:
         # Parse delta: accepts "+1", "-1", "1", "-2", etc.
         delta_str = args.delta.strip()
