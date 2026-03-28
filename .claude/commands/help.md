@@ -10,22 +10,22 @@ Show the learner what they can do and where to start.
    - The learner's name (use it in the greeting)
    - Current CEFR level
 
-3. Read `curriculum/index.md` to determine the suggested next step:
-   - Find the first unchecked topic at the learner's current level.
-   - If **all topics at the current level are checked**, show:
+3. Use `curriculum_query.py` to determine the suggested next step:
+   - Run `python3 scripts/curriculum_query.py --check [LEVEL]` where LEVEL is the learner's current CEFR level.
+   - The first topic shown without ✓ is the next lesson to suggest.
+   - If all topics at the current level are complete (`python3 -c "import sys; sys.path.insert(0,'scripts'); from curriculum_query import all_complete; print(all_complete('[LEVEL]'))"` returns `True`), show:
      "You've finished all [Level] topics! You're ready for [Next Level].
      Next up: `/lesson [first topic of next level]`"
    - If the learner is at C1 and all C1 topics are done, show:
      "You've completed the full curriculum! Focus on `/sohbet` for fluency
      or `/quiz` on any topic to keep sharp."
-   - If **no topics are checked yet**, suggest: `/lesson the Turkish alphabet`
+   - If no topics are complete yet, suggest: `/lesson the Turkish alphabet`
 
 4. Run `python3 scripts/session_start.py` and read its full output: vocab due count, streak, suggested next action, and top weak spots (if any recorded).
    Use the vocab due count to determine whether to recommend `/review` first.
    Include the weak spots in the help screen if any are shown.
 
-5. Count ✓ marks in the learner's current level section of `curriculum/index.md`
-   to show progress as "X of Y topics complete in [Level]".
+5. Run `python3 -c "import sys; sys.path.insert(0,'scripts'); from curriculum_query import count_complete; done,total=count_complete('[LEVEL]'); print(f'{done}/{total}')"` to get the "X of Y topics complete in [Level]" count.
 
 6. Output the help screen using the template below.
 
