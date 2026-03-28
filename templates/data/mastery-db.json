@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "updated": null,
+  "skills": {
+    "speaking":   {"level": 0, "history": []},
+    "reading":    {"level": 0, "history": []},
+    "writing":    {"level": 0, "history": []},
+    "grammar":    {"level": 0, "history": []},
+    "vocabulary": {"level": 0, "history": []}
+  }
+}
