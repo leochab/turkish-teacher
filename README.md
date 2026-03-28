@@ -6,7 +6,7 @@ A Claude Code-powered Turkish language learning environment. Open this folder in
 
 1. **Open this folder in Claude Code**
    ```
-   cd turkish-lessons
+   cd turkish-teacher
    claude
    ```
    > Requires Python 3.6+ (stdlib only — no pip install needed). Verify with `python3 --version`.
@@ -40,7 +40,7 @@ A Claude Code-powered Turkish language learning environment. Open this folder in
 ## Folder Structure
 
 ```
-turkish-lessons/
+turkish-teacher/
 ├── README.md               ← this file
 ├── CLAUDE.md               ← teacher persona (read by Claude automatically)
 ├── templates/              ← clean copies; edit here to change structure
@@ -87,5 +87,3 @@ This system is what makes Turkish feel hard at first and beautifully logical onc
 ## Contributing
 
 Lessons are delivered dynamically by the `/lesson` skill. The skill structure is defined in `.claude/commands/lesson.md`. See `curriculum/index.md` for the full topic list and prerequisites.
-
-PRs welcome.
