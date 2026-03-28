@@ -4,17 +4,20 @@ Quiz type or topic (optional): $ARGUMENTS
 
 ## Instructions
 
-1. Run `python3 scripts/analyze_mistakes.py` and read the output. Note the top 2–3 weak spots — these will drive question selection in step 3.
+1. Run `python3 scripts/analyze_mistakes.py --top 3` and read the output. Note any weak spots — these drive question weighting in step 4.
 
 2. Read `progress/learner.md` to get:
    - Current CEFR level
    - Recently completed lessons (test recent material)
+   - "What I've Covered" section for any manually flagged weak topics
 
 3. Read `vocab/vocab.json` to pull real vocabulary the learner has been studying.
 
 4. Generate a **10-question quiz** with a mix of question types. Choose types appropriate to the learner's level.
 
-   **Weak-spot weighting rule:** At least 4 of the 10 questions must directly target rules from the `analyze_mistakes.py` output (e.g., if "Vowel harmony in dative suffix" is the top weak spot, include at least 2 questions that require choosing or applying the dative suffix). If no mistakes are recorded yet, distribute question types freely.
+   **Weak-spot weighting rule:** If weak spots were recorded, at least 4 of the 10 questions must target those rules. Spread across the top 1–3 weak spots (not all 4 on one rule). If fewer than 4 questions can be meaningfully constructed for the recorded weak rules at the learner's level, fill the remainder with recent lesson material and note why.
+
+   If no mistakes are recorded yet, distribute question types freely.
 
 ### Question Types (mix at least 4 types)
 

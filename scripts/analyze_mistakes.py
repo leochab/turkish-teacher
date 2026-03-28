@@ -54,9 +54,10 @@ def parse_mistakes_table(text):
                 in_table = True
             continue
 
-        # Skip the separator row (|---|---|...)
+        # Skip the separator row (|---|---|...).
+        # Require ≥2 dashes per cell so filler rows like "| - | - |" don't match.
         if not past_separator:
-            if re.match(r"^\|[-| :]+\|$", stripped):
+            if re.match(r"^\|(\s*:?-{2,}:?\s*\|)+$", stripped):
                 past_separator = True
             continue
 
@@ -95,8 +96,8 @@ def main():
         with open(LEARNER_PATH) as f:
             text = f.read()
     except FileNotFoundError:
-        print("No mistakes recorded yet (progress/learner.md not found).")
-        sys.exit(0)
+        print("No mistakes recorded yet (progress/learner.md not found).", file=sys.stderr)
+        sys.exit(1)
 
     rules = parse_mistakes_table(text)
     counts = Counter(rules)

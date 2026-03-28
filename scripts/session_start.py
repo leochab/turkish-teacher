@@ -12,12 +12,14 @@ import sys
 from collections import Counter
 from datetime import date, datetime, timedelta
 
+# Import shared parser from analyze_mistakes (same scripts/ directory)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from analyze_mistakes import parse_mistakes_table  # noqa: E402
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VOCAB_PATH = os.path.join(BASE, "vocab", "vocab.json")
 LEARNER_PATH = os.path.join(BASE, "progress", "learner.md")
 SESSION_LOG_HEADER = "## Session Log"
-MISTAKES_HEADER = "## Recurring Mistakes"
 
 
 # --- Vocab ---
@@ -132,43 +134,8 @@ def format_streak(streak, last_date):
 # --- Weak spots ---
 
 def get_top_weak_spots(text, top_n=3):
-    """
-    Parse Recurring Mistakes table and return the top_n most frequent rules.
-    Returns list of (rule, count) tuples, or empty list if none recorded.
-    """
-    rules = []
-    in_section = False
-    in_table = False
-    past_separator = False
-
-    for line in text.splitlines():
-        if MISTAKES_HEADER in line:
-            in_section = True
-            continue
-        if not in_section:
-            continue
-        if line.startswith("##") and MISTAKES_HEADER not in line:
-            break
-        stripped = line.strip()
-        if not stripped.startswith("|"):
-            continue
-        if not in_table:
-            if re.search(r"\|\s*Rule\s*\|", stripped, re.IGNORECASE):
-                in_table = True
-            continue
-        if not past_separator:
-            if re.match(r"^\|[-| :]+\|$", stripped):
-                past_separator = True
-            continue
-        parts = [p.strip() for p in stripped.strip("|").split("|")]
-        if len(parts) < 4:
-            continue
-        rule = parts[3].strip()
-        if rule and rule not in ("", "—", "-"):
-            rules.append(rule)
-
-    counts = Counter(rules)
-    return counts.most_common(top_n)
+    """Return the top_n most frequent rules from the Recurring Mistakes table."""
+    return Counter(parse_mistakes_table(text)).most_common(top_n)
 
 
 # --- Next action ---
@@ -205,8 +172,9 @@ def main():
     print(format_streak(streak, last_date))
     print(f"Suggested: {suggest_next(due, last_date, session_type)}")
     if weak_spots:
-        spots = "; ".join(f"{rule} (×{count})" for rule, count in weak_spots)
-        print(f"Top weak spots: {spots}")
+        print("Top weak spots:")
+        for rank, (rule, count) in enumerate(weak_spots, start=1):
+            print(f"  {rank}. {rule} (×{count})")
 
 
 if __name__ == "__main__":
