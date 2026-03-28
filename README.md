@@ -47,7 +47,8 @@ turkish-teacher/
 ├── templates/              ← clean copies; edit here to change structure
 │   ├── progress/learner.md
 │   ├── vocab/vocab.json
-│   └── curriculum/index.json
+│   ├── curriculum/index.json
+│   └── data/               ← session-log.json, mastery-db.json, mistakes-db.json, progress-db.json
 ├── schemas/                ← JSON Schema Draft-07 files for all data structures
 ├── progress/
 │   └── learner.md          ← YOUR profile (gitignored — init with bootstrap.sh)
@@ -57,12 +58,20 @@ turkish-teacher/
 ├── curriculum/
 │   ├── index.json          ← topic map + completion tracker (gitignored)
 │   └── reference.md        ← linguistic reference (cases, harmony, suffix ordering)
+├── data/                   ← runtime data files (gitignored — init with bootstrap.sh)
+│   ├── session-log.json    ← session history (single source of truth)
+│   ├── mastery-db.json     ← per-skill mastery levels (0–5)
+│   ├── mistakes-db.json    ← structured recurring mistake entries
+│   └── progress-db.json    ← session accuracy + topic-level accuracy
 ├── scripts/
-│   ├── bootstrap.sh        ← init working files from templates/
-│   ├── curriculum_query.py ← read/write curriculum/index.json (mark topics complete)
-│   ├── session_start.py    ← deterministic dashboard (due words, streak, suggestion)
-│   ├── session_log_append.py ← appends a row to the session log in learner.md
-│   └── srs_update.py       ← applies SM-2 scheduling after each vocab card
+│   ├── bootstrap.sh          ← init working files from templates/
+│   ├── curriculum_query.py   ← read/write curriculum/index.json (mark topics complete)
+│   ├── session_start.py      ← deterministic dashboard (due words, streak, suggestion)
+│   ├── session_log_append.py ← appends a session entry to data/session-log.json
+│   ├── mastery_update.py     ← read/update skill mastery levels in data/mastery-db.json
+│   ├── mistakes_update.py    ← add/read recurring mistakes in data/mistakes-db.json
+│   ├── progress_update.py    ← log sessions and query progress in data/progress-db.json
+│   └── srs_update.py         ← applies SM-2 scheduling after each vocab card
 └── .claude/
     └── commands/           ← slash command definitions
 ```
