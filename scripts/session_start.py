@@ -9,12 +9,11 @@ import json
 import os
 import re
 import sys
-from collections import Counter
 from datetime import date, datetime, timedelta
 
 # Import shared parser from analyze_mistakes (same scripts/ directory)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from analyze_mistakes import parse_mistakes_table  # noqa: E402
+from analyze_mistakes import rank_weak_spots  # noqa: E402
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VOCAB_PATH = os.path.join(BASE, "vocab", "vocab.json")
@@ -134,8 +133,8 @@ def format_streak(streak, last_date):
 # --- Weak spots ---
 
 def get_top_weak_spots(text, top_n=3):
-    """Return the top_n most frequent rules from the Recurring Mistakes table."""
-    return Counter(parse_mistakes_table(text)).most_common(top_n)
+    """Return top_n decay-weighted weak spots as (rule, score, last_days) tuples."""
+    return rank_weak_spots(text, top_n=top_n)
 
 
 # --- Next action ---
@@ -173,8 +172,14 @@ def main():
     print(f"Suggested: {suggest_next(due, last_date, session_type)}")
     if weak_spots:
         print("Top weak spots:")
-        for rank, (rule, count) in enumerate(weak_spots, start=1):
-            print(f"  {rank}. {rule} (×{count})")
+        for rank, (rule, _score, last_days) in enumerate(weak_spots, start=1):
+            if last_days == 0:
+                recency = "today"
+            elif last_days == 1:
+                recency = "yesterday"
+            else:
+                recency = f"{last_days}d ago"
+            print(f"  {rank}. {rule}  (last: {recency})")
 
 
 if __name__ == "__main__":

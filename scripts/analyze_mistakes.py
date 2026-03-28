@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Analyze the Recurring Mistakes table in progress/learner.md.
-Aggregates errors by rule type and prints a ranked list of weak spots.
+Ranks weak spots using exponential time decay so recent mistakes
+outweigh old ones. A mistake made ~1 year ago retains ~5% weight.
 
 Usage:
   python3 scripts/analyze_mistakes.py [--top N]
@@ -13,23 +14,28 @@ Requires: Python 3.6+ (stdlib only)
 """
 
 import argparse
+import math
 import os
 import re
 import sys
-from collections import Counter
+from datetime import date
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEARNER_PATH = os.path.join(BASE, "progress", "learner.md")
 MISTAKES_HEADER = "## Recurring Mistakes"
 
+# λ chosen so that e^(-λ × 365) ≈ 0.05: a mistake fades to ~5% after one year.
+LAMBDA = math.log(20) / 365  # ≈ 0.0082 per day
+
 
 def parse_mistakes_table(text):
     """
     Parse the Recurring Mistakes table from learner.md.
-    Returns a list of rule strings (one per data row).
-    Rows with empty Rule column are skipped.
+    Returns a list of (rule, date_str) tuples.
+    Rows with an empty Rule column are skipped.
+    date_str is "" when the date cell is absent or unparseable.
     """
-    rules = []
+    entries = []
     in_section = False
     in_table = False
     past_separator = False
@@ -67,26 +73,68 @@ def parse_mistakes_table(text):
             continue
 
         rule = parts[3].strip()
-        if rule and rule not in ("", "—", "-"):
-            rules.append(rule)
+        if not rule or rule in ("—", "-"):
+            continue
 
-    return rules
+        date_str = parts[0].strip()
+        entries.append((rule, date_str))
+
+    return entries
 
 
-def format_output(counts, top_n):
-    if not counts:
+def rank_weak_spots(text, top_n=5, today=None, lam=LAMBDA):
+    """
+    Decay-weight each row by how long ago it was recorded, then rank rules.
+    Rules that caused mistakes recently score higher than rules only seen long ago.
+
+    Returns a list of (rule, score, last_seen_days_ago) sorted by score desc,
+    capped at top_n entries.
+    """
+    if today is None:
+        today = date.today()
+
+    entries = parse_mistakes_table(text)
+
+    scores = {}    # rule -> cumulative decay score
+    last_seen = {}  # rule -> days since most recent occurrence
+
+    for rule, date_str in entries:
+        try:
+            d = date.fromisoformat(date_str)
+            days_ago = max(0, (today - d).days)
+        except (ValueError, TypeError):
+            days_ago = 730  # missing / invalid date → treat as ~2 years old
+
+        weight = math.exp(-lam * days_ago)
+        scores[rule] = scores.get(rule, 0.0) + weight
+        if rule not in last_seen or days_ago < last_seen[rule]:
+            last_seen[rule] = days_ago
+
+    ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:top_n]
+    return [(rule, scores[rule], last_seen.get(rule, 730)) for rule, _ in ranked]
+
+
+def _recency_label(days_ago):
+    if days_ago == 0:
+        return "today"
+    if days_ago == 1:
+        return "yesterday"
+    return f"{days_ago} days ago"
+
+
+def format_output(ranked):
+    if not ranked:
         print("No recurring mistakes recorded yet.")
         return
 
-    print("Top weak spots (by frequency):")
-    for rank, (rule, count) in enumerate(counts.most_common(top_n), start=1):
-        times = f"×{count}"
-        print(f"  {rank}. {rule} ({times})")
+    print("Top weak spots (recent mistakes weighted higher):")
+    for i, (rule, score, last_days) in enumerate(ranked, start=1):
+        print(f"  {i}. {rule}  (last: {_recency_label(last_days)})")
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Analyze Recurring Mistakes table and rank weak spots."
+        description="Rank weak spots by decay-weighted mistake frequency."
     )
     parser.add_argument("--top", type=int, default=5,
                         help="Number of top weak spots to show (default: 5)")
@@ -96,12 +144,11 @@ def main():
         with open(LEARNER_PATH) as f:
             text = f.read()
     except FileNotFoundError:
-        print("No mistakes recorded yet (progress/learner.md not found).", file=sys.stderr)
+        print("progress/learner.md not found — no mistakes recorded yet.", file=sys.stderr)
         sys.exit(1)
 
-    rules = parse_mistakes_table(text)
-    counts = Counter(rules)
-    format_output(counts, args.top)
+    ranked = rank_weak_spots(text, top_n=args.top)
+    format_output(ranked)
 
 
 if __name__ == "__main__":
