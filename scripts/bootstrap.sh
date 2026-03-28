@@ -11,9 +11,6 @@ FILES=(
   "curriculum/index.json"
 )
 
-# To migrate existing ✓ marks from index.md to index.json, run:
-# python3 scripts/migrate_curriculum.py
-
 for f in "${FILES[@]}"; do
   if [ -f "$f" ]; then
     echo "skip  $f  (already exists)"
