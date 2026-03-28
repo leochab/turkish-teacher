@@ -17,6 +17,7 @@ Run directly to inspect the curriculum:
     python3 scripts/curriculum_query.py --mark <level> <number>
 """
 
+import contextlib
 import json
 import os
 import sys
@@ -49,7 +50,8 @@ def _save(data: dict) -> None:
             fh.write("\n")
         os.replace(tmp, _CURRICULUM_PATH)
     except Exception:
-        os.unlink(tmp)
+        with contextlib.suppress(OSError):
+            os.unlink(tmp)
         raise
 
 
