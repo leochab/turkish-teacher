@@ -29,8 +29,14 @@ _CURRICULUM_PATH = os.path.join(
 
 
 def _load() -> dict:
-    with open(_CURRICULUM_PATH, encoding="utf-8") as fh:
-        return json.load(fh)
+    try:
+        with open(_CURRICULUM_PATH, encoding="utf-8") as fh:
+            return json.load(fh)
+    except FileNotFoundError:
+        raise FileNotFoundError(
+            f"curriculum/index.json not found — run 'bash scripts/bootstrap.sh' first.\n"
+            f"(Expected path: {_CURRICULUM_PATH})"
+        ) from None
 
 
 def _save(data: dict) -> None:
