@@ -142,11 +142,8 @@ def append_json_entry(date_str, command, vocab, notes, accuracy, duration):
 
     # Load existing entries (initialize to [] if file missing or empty)
     if os.path.exists(SESSION_LOG_JSON):
-        try:
-            with open(SESSION_LOG_JSON, encoding="utf-8") as f:
-                entries = json.load(f)
-        except (json.JSONDecodeError, ValueError):
-            entries = []
+        with open(SESSION_LOG_JSON, encoding="utf-8") as f:
+            entries = json.load(f)
     else:
         entries = []
 
