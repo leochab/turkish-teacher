@@ -6,7 +6,9 @@ Teach a structured Turkish lesson on the topic: $ARGUMENTS
 
 2. Run `python3 scripts/analyze_mistakes.py --top 3` and note the output (if any). Keep this in mind — you will use it in the Exercises section below.
 
-3. Check `curriculum/index.md` to confirm this topic is appropriate for the learner's level and that prerequisites have been covered.
+3. Check `curriculum/index.json` to confirm this topic is appropriate for the learner's level and that prerequisites have been covered:
+   - Run `python3 scripts/curriculum_query.py --check [LEVEL]` to find the topic entry and its `prerequisites` list.
+   - Each prerequisite is either a `LEVEL/NN` string (specific topic) or a level string (`A1`, `A2`, etc. meaning that full level must be complete). Verify the prerequisite topics are marked `completed: true` before proceeding.
 
 4. Structure the lesson as follows:
 
@@ -76,7 +78,7 @@ After completing the lesson exercises and any follow-up questions:
      ```
    - If **all topics in the level are now complete**, announce the milestone prominently:
      ```
-     🎉 Level complete! You've finished [Level] — [Level "Can do" summary from curriculum/index.md].
+     🎉 Level complete! You've finished [Level] — [Level "can_do" value from curriculum/index.json].
      You're now ready for [Next Level]. Next up: [first topic of next level].
      ```
    - Then update the **Current CEFR level** field in `progress/learner.md` to the next level.
