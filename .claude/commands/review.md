@@ -49,7 +49,7 @@ Run a spaced repetition vocabulary review session.
    - Hardest words (show them again at end)
    - Next review session date (when the next batch comes due)
 
-7. After the session summary, **automatically write to `progress/learner.md`** (no permission needed):
+7. After the session summary, **automatically update session data** (no permission needed):
 
    **Session Log** — run:
    ```
