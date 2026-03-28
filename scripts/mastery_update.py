@@ -144,6 +144,8 @@ def main():
             print(f"Invalid --delta value '{args.delta}'. Use e.g. +1 or -1.", file=sys.stderr)
             sys.exit(1)
         new_level = max(LEVEL_MIN, min(LEVEL_MAX, current_level + delta))
+        if new_level != current_level + delta:
+            print(f"Warning: --delta {args.delta} would exceed range; clamped to {new_level}.", file=sys.stderr)
 
     update_skill(db, args.skill, new_level)
 

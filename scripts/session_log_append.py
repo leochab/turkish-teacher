@@ -25,7 +25,6 @@ Requires: Python 3.6+ (stdlib only)
 import argparse
 import json
 import os
-import re
 import shutil
 import sys
 import tempfile
@@ -53,8 +52,14 @@ def main():
                         help="Duration in minutes (optional)")
     args = parser.parse_args()
 
-    if not re.match(r"^\d{4}-\d{2}-\d{2}$", args.date):
-        print(f"Invalid date format '{args.date}'. Use YYYY-MM-DD.", file=sys.stderr)
+    try:
+        date.fromisoformat(args.date)
+    except ValueError:
+        print(f"Invalid date '{args.date}'. Use YYYY-MM-DD.", file=sys.stderr)
+        sys.exit(1)
+
+    if args.accuracy is not None and not (0.0 <= args.accuracy <= 1.0):
+        print(f"--accuracy {args.accuracy} out of range. Use a value between 0.0 and 1.0.", file=sys.stderr)
         sys.exit(1)
 
     json_dir = os.path.dirname(SESSION_LOG_JSON)
@@ -70,14 +75,17 @@ def main():
     else:
         entries = []
 
-    entries.append({
+    entry = {
         "date": args.date,
         "command": args.command,
         "vocab_added": args.vocab,
         "notes": args.notes,
-        "accuracy": args.accuracy,
-        "duration_minutes": args.duration,
-    })
+    }
+    if args.accuracy is not None:
+        entry["accuracy"] = args.accuracy
+    if args.duration is not None:
+        entry["duration_minutes"] = args.duration
+    entries.append(entry)
 
     tmp_path = None
     try:

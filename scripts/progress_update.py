@@ -68,16 +68,19 @@ def save_db(db):
 def log_session(db, command, skill, accuracy, duration, topic, vocab_added, notes):
     """Append a session record to db['sessions']."""
     today = date.today().isoformat()
-    entry = {
-        "date": today,
-        "command": command or "",
-        "skill": skill or "",
-        "accuracy": accuracy,
-        "duration_minutes": duration,
-        "topic": topic or "",
-        "vocab_added": vocab_added,
-        "notes": notes or "",
-    }
+    entry = {"date": today, "command": command}
+    if skill:
+        entry["skill"] = skill
+    if accuracy is not None:
+        entry["accuracy"] = accuracy
+    if duration is not None:
+        entry["duration_minutes"] = duration
+    if topic:
+        entry["topic"] = topic
+    if vocab_added:
+        entry["vocab_added"] = vocab_added
+    if notes:
+        entry["notes"] = notes
     db.setdefault("sessions", []).append(entry)
 
 
@@ -295,6 +298,10 @@ def main():
 
     args = parser.parse_args()
 
+    if args.accuracy is not None and not (0.0 <= args.accuracy <= 1.0):
+        print(f"--accuracy {args.accuracy} out of range. Use a value between 0.0 and 1.0.", file=sys.stderr)
+        sys.exit(1)
+
     try:
         db = load_db()
     except Exception as e:
@@ -325,6 +332,9 @@ def main():
     if args.update_topic:
         if args.attempts is None or args.correct is None:
             print("--attempts and --correct are required with --update-topic.", file=sys.stderr)
+            sys.exit(1)
+        if args.correct > args.attempts:
+            print(f"--correct ({args.correct}) cannot exceed --attempts ({args.attempts}).", file=sys.stderr)
             sys.exit(1)
         update_topic(db, args.update_topic, args.attempts, args.correct)
         print(f"Topic accuracy updated: {args.update_topic} (+{args.correct}/{args.attempts})")
