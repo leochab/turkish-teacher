@@ -330,10 +330,7 @@ def main():
         print(f"Topic accuracy updated: {args.update_topic} (+{args.correct}/{args.attempts})")
         wrote = True
 
-    if args.command or args.skill or args.accuracy is not None or args.duration or args.notes:
-        if not args.command:
-            print("--command is required when logging a session.", file=sys.stderr)
-            sys.exit(1)
+    if args.command:
         log_session(db, args.command, args.skill, args.accuracy,
                     args.duration, args.topic, args.vocab_added, args.notes)
         print(f"Session logged: {args.command}")
