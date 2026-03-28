@@ -4,6 +4,9 @@
 
 set -euo pipefail
 
+# Always run from the repository root regardless of invocation directory
+cd "$(dirname "$0")/.."
+
 # Ensure the data directory exists
 mkdir -p data
 
