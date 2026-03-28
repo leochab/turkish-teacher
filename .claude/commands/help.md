@@ -44,6 +44,7 @@ Hi [name]! Here's what you can do:
 | `/quiz` | 10-question quiz tailored to your level and weak spots | `/quiz` or `/quiz verb tenses` |
 | `/review` | Spaced repetition flashcard session for due vocabulary | `/review` |
 | `/sohbet` | Turkish-only conversation mode — Claude corrects inline | `/sohbet` |
+| `/setup` | Run (or re-run) the onboarding flow to set or update your learner profile | `/setup` |
 | `/help` | Show this screen | `/help` |
 
 ---
