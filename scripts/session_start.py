@@ -7,7 +7,6 @@ Requires: Python 3.6+ (stdlib only)
 
 import json
 import os
-import re
 import sys
 from datetime import date, datetime, timedelta
 
@@ -18,7 +17,7 @@ from analyze_mistakes import rank_weak_spots, _recency_label  # noqa: E402
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VOCAB_PATH = os.path.join(BASE, "vocab", "vocab.json")
 LEARNER_PATH = os.path.join(BASE, "progress", "learner.md")
-SESSION_LOG_HEADER = "## Session Log"
+SESSION_LOG_JSON = os.path.join(BASE, "data", "session-log.json")
 
 
 # --- Vocab ---
@@ -38,47 +37,32 @@ def count_due_words():
 
 # --- Session log ---
 
-def parse_session_log(text):
-    """Return sorted list of unique session date strings (YYYY-MM-DD), most recent first."""
+def load_sessions():
+    """Return list of session entries from data/session-log.json, oldest first."""
+    try:
+        with open(SESSION_LOG_JSON, encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
+
+def session_dates(sessions):
+    """Return sorted list of unique session date strings, most recent first."""
     dates = set()
-    in_log = False
-    for line in text.splitlines():
-        if SESSION_LOG_HEADER in line:
-            in_log = True
-            continue
-        if not in_log:
-            continue
-        if line.startswith("##"):
-            break
-        if not line.startswith("|"):
-            continue
-        parts = [p.strip() for p in line.split("|")]
-        if len(parts) < 2:
-            continue
-        candidate = parts[1]
-        if re.match(r"^\d{4}-\d{2}-\d{2}$", candidate):
-            dates.add(candidate)
+    for s in sessions:
+        d = s.get("date", "")
+        if d:
+            dates.add(d)
     return sorted(dates, reverse=True)
 
 
-def last_session_type(text):
-    """Return the 'What was covered' field of the most recent session log row."""
-    in_log = False
-    last = ""
-    for line in text.splitlines():
-        if SESSION_LOG_HEADER in line:
-            in_log = True
-            continue
-        if not in_log:
-            continue
-        if line.startswith("##"):
-            break
-        if not line.startswith("|"):
-            continue
-        parts = [p.strip() for p in line.split("|")]
-        if len(parts) >= 3 and re.match(r"^\d{4}-\d{2}-\d{2}$", parts[1]):
-            last = parts[2]
-    return last
+def last_session_command(sessions):
+    """Return the command field of the most recent session entry."""
+    for s in reversed(sessions):
+        cmd = s.get("command", "")
+        if cmd:
+            return cmd
+    return ""
 
 
 # --- Streak ---
@@ -157,15 +141,17 @@ def suggest_next(due_count, last_date, session_type):
 def main():
     due = count_due_words()
 
+    sessions = load_sessions()
+    dates = session_dates(sessions)
+    streak, last_date = calculate_streak(dates)
+    session_type = last_session_command(sessions)
+
     try:
         with open(LEARNER_PATH) as f:
             learner = f.read()
-        dates = parse_session_log(learner)
-        streak, last_date = calculate_streak(dates)
-        session_type = last_session_type(learner)
         weak_spots = get_top_weak_spots(learner)
     except FileNotFoundError:
-        dates, streak, last_date, session_type, weak_spots = [], 0, None, "", []
+        weak_spots = []
 
     print(f"{due} word{'s' if due != 1 else ''} due for review")
     print(format_streak(streak, last_date))
