@@ -86,4 +86,4 @@ This system is what makes Turkish feel hard at first and beautifully logical onc
 
 ## Contributing
 
-This is a personal learning environment — pull requests are not accepted.
+Lessons are delivered dynamically by the `/lesson` skill. The skill structure is defined in `.claude/commands/lesson.md`. See `curriculum/index.md` for the full topic list and prerequisites.
