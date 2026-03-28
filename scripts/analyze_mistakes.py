@@ -111,7 +111,7 @@ def rank_weak_spots(text, top_n=5, today=None, lam=LAMBDA):
             last_seen[rule] = days_ago
 
     ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:top_n]
-    return [(rule, scores[rule], last_seen.get(rule, 730)) for rule, _ in ranked]
+    return [(rule, score, last_seen[rule]) for rule, score in ranked]
 
 
 def _recency_label(days_ago):

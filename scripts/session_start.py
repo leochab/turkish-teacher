@@ -13,7 +13,7 @@ from datetime import date, datetime, timedelta
 
 # Import shared parser from analyze_mistakes (same scripts/ directory)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from analyze_mistakes import rank_weak_spots  # noqa: E402
+from analyze_mistakes import rank_weak_spots, _recency_label  # noqa: E402
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VOCAB_PATH = os.path.join(BASE, "vocab", "vocab.json")
@@ -173,13 +173,7 @@ def main():
     if weak_spots:
         print("Top weak spots:")
         for rank, (rule, _score, last_days) in enumerate(weak_spots, start=1):
-            if last_days == 0:
-                recency = "today"
-            elif last_days == 1:
-                recency = "yesterday"
-            else:
-                recency = f"{last_days}d ago"
-            print(f"  {rank}. {rule}  (last: {recency})")
+            print(f"  {rank}. {rule}  (last: {_recency_label(last_days)})")
 
 
 if __name__ == "__main__":
