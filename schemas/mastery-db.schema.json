@@ -8,7 +8,12 @@
   "additionalProperties": false,
   "properties": {
     "version": { "type": "string" },
-    "updated": { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "updated": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+      ]
+    },
     "skills": {
       "type": "object",
       "required": ["speaking", "reading", "writing", "grammar", "vocabulary"],
