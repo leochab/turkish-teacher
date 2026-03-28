@@ -61,7 +61,7 @@ When the learner shares their answers, grade them and:
 - Report how they did on weak-spot questions specifically (e.g., "You got 3/4 weak-spot questions right — vowel harmony in dative is improving!")
 - Offer a brief targeted drill on any topic where they got 2+ wrong
 
-Then **automatically write to `progress/learner.md`** (no permission needed):
+Then **automatically update session data** (no permission needed):
 
 1. **Recurring Mistakes** — for each question answered incorrectly, follow `.claude/commands/_recurring-mistakes.md`.
 

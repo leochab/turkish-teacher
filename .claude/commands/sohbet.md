@@ -40,7 +40,7 @@ When the learner types `/stop` or says they want to finish:
 3. Note 1-2 grammar patterns the learner struggled with — suggest a `/lesson` for them.
 4. Ask if they want the new vocabulary added to `vocab/`.
 
-Then **automatically write to `progress/learner.md`** (no permission needed):
+Then **automatically update session data** (no permission needed):
 
 5. **Recurring Mistakes** — for each grammar error corrected during the conversation, follow `.claude/commands/_recurring-mistakes.md`.
 

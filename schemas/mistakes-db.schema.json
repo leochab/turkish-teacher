@@ -7,6 +7,7 @@
   "required": ["entries"],
   "additionalProperties": false,
   "properties": {
+    "version": { "type": "string" },
     "entries": {
       "type": "array",
       "items": { "$ref": "#/$defs/entry" }
@@ -30,10 +31,24 @@
         "frequency":     { "type": "integer", "minimum": 1 },
         "first_occurred":{ "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
         "last_occurred": { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
-        "next_review":   { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "next_review": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+          ]
+        },
         "examples": {
           "type": "array",
-          "items": { "type": "string" }
+          "items": {
+            "type": "object",
+            "required": ["date", "context", "command"],
+            "additionalProperties": false,
+            "properties": {
+              "date":    { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+              "context": { "type": "string" },
+              "command": { "type": "string" }
+            }
+          }
         }
       }
     }

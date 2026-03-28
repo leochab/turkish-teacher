@@ -1,13 +1,19 @@
 # Recurring Mistakes — Shared Logic
 
-When updating the **Recurring Mistakes** table in `progress/learner.md` after a session:
+When recording mistakes after a session, run `mistakes_update.py` for each error (no permission needed):
 
-1. For each error made, scan the existing table for a row where both the **Error** column and the **Rule** column match what you are about to append. If a matching row exists, skip it — do not add a duplicate.
-2. If no matching row exists, append:
-   ```
-   | YYYY-MM-DD | [their form] | [correct form] | [rule violated] |
-   ```
-   For the rule name: scan the existing Rule column and reuse the closest matching name. Only coin a new name if nothing already in the table fits.
-3. After appending any new rows, update the **Summary** line above the table to reflect any emerging pattern (e.g. "consistently confuses back/front vowels in dative suffix").
+```bash
+python3 scripts/mistakes_update.py \
+  --category [morphology|vowel_harmony|case|tense|vocabulary|other] \
+  --rule "[rule violated, e.g. vowel harmony in dative suffix]" \
+  --error-form "[what the learner wrote]" \
+  --correct-form "[correct form]" \
+  --context "[the sentence or word where the error occurred]" \
+  --command "[current command, e.g. /quiz]"
+```
+
+The script deduplicates on `--rule` — if the same rule already exists in `data/mistakes-db.json`, it increments the frequency count and appends the new example rather than creating a duplicate entry.
+
+After running, update the **Summary** line in the `## Recurring Mistakes` section of `progress/learner.md` to reflect any emerging pattern (e.g. "consistently confuses back/front vowels in dative suffix"). The markdown summary is a human-readable overview; the authoritative data lives in `data/mistakes-db.json`.
 
 Do not ask for permission — write these updates automatically.

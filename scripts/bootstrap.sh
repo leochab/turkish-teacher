@@ -4,10 +4,20 @@
 
 set -euo pipefail
 
+# Always run from the repository root regardless of invocation directory
+cd "$(dirname "$0")/.."
+
+# Ensure gitignored directories exist (not created by git on fresh clone)
+mkdir -p progress data
+
 FILES=(
   "progress/learner.md"
   "vocab/vocab.json"
   "curriculum/index.json"
+  "data/session-log.json"
+  "data/mastery-db.json"
+  "data/mistakes-db.json"
+  "data/progress-db.json"
 )
 
 for f in "${FILES[@]}"; do

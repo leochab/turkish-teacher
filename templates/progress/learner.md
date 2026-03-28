@@ -55,8 +55,4 @@
 
 ## Session Log
 
-> Brief notes after each session.
-
-| Date | What was covered | New vocab added | Notes |
-|------|-----------------|----------------|-------|
-| | | | |
+> Session history is stored in `data/session-log.json`. Run `/progress` to view it.
