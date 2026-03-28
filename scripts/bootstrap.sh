@@ -4,10 +4,17 @@
 
 set -euo pipefail
 
+# Ensure the data directory exists
+mkdir -p data
+
 FILES=(
   "progress/learner.md"
   "vocab/vocab.json"
   "curriculum/index.json"
+  "data/session-log.json"
+  "data/mastery-db.json"
+  "data/mistakes-db.json"
+  "data/progress-db.json"
 )
 
 for f in "${FILES[@]}"; do
