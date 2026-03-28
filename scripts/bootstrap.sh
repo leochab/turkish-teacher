@@ -7,7 +7,7 @@ set -euo pipefail
 FILES=(
   "progress/learner.md"
   "vocab/vocab.json"
-  "curriculum/index.md"
+  "curriculum/index.json"
 )
 
 for f in "${FILES[@]}"; do

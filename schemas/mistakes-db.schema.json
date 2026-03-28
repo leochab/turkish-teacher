@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "mistakes-db.schema.json",
+  "title": "Mistakes DB",
+  "description": "Recurring mistake log, structured for decay-weighted weak-spot ranking.",
+  "type": "object",
+  "required": ["entries"],
+  "additionalProperties": false,
+  "properties": {
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entry" }
+    }
+  },
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "required": ["id", "category", "rule", "error_form", "correct_form", "frequency", "first_occurred", "last_occurred"],
+      "additionalProperties": false,
+      "properties": {
+        "id":           { "type": "string" },
+        "category": {
+          "type": "string",
+          "enum": ["morphology", "vowel_harmony", "case", "tense", "vocabulary", "other"]
+        },
+        "subcategory":   { "type": "string" },
+        "rule":          { "type": "string" },
+        "error_form":    { "type": "string" },
+        "correct_form":  { "type": "string" },
+        "frequency":     { "type": "integer", "minimum": 1 },
+        "first_occurred":{ "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "last_occurred": { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "next_review":   { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "examples": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

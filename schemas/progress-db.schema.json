@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "progress-db.schema.json",
+  "title": "Progress DB",
+  "description": "Session history, weekly summaries, and per-topic accuracy.",
+  "type": "object",
+  "required": ["sessions", "weekly_summaries", "topic_accuracy"],
+  "additionalProperties": false,
+  "properties": {
+    "sessions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/session" }
+    },
+    "weekly_summaries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["week_start"],
+        "additionalProperties": false,
+        "properties": {
+          "week_start":      { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+          "sessions_count":  { "type": "integer", "minimum": 0 },
+          "vocab_added":     { "type": "integer", "minimum": 0 },
+          "avg_accuracy":    { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+          "notes":           { "type": "string" }
+        }
+      }
+    },
+    "topic_accuracy": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["attempts", "correct", "last_date"],
+        "additionalProperties": false,
+        "properties": {
+          "attempts":  { "type": "integer", "minimum": 0 },
+          "correct":   { "type": "integer", "minimum": 0 },
+          "last_date": { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "session": {
+      "type": "object",
+      "required": ["date", "command", "skill"],
+      "additionalProperties": false,
+      "properties": {
+        "date":             { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "command":          { "type": "string" },
+        "skill": {
+          "type": "string",
+          "enum": ["lesson", "quiz", "review", "sohbet", "parse", "setup", "free-form"]
+        },
+        "duration_minutes": { "type": "integer", "minimum": 0 },
+        "accuracy": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "topic":       { "type": "string" },
+        "vocab_added": { "type": "integer", "minimum": 0 },
+        "notes":       { "type": "string" }
+      }
+    }
+  }
+}
