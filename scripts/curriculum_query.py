@@ -161,7 +161,13 @@ if __name__ == "__main__":
         if len(args) < 3:
             print("Usage: curriculum_query.py --mark <LEVEL> <NUMBER>", file=sys.stderr)
             sys.exit(1)
-        _cmd_mark(args[1].upper(), int(args[2]))
+        try:
+            number = int(args[2])
+        except ValueError:
+            print(f"Error: topic number must be an integer, got {args[2]!r}", file=sys.stderr)
+            print("Usage: curriculum_query.py --mark <LEVEL> <NUMBER>", file=sys.stderr)
+            sys.exit(1)
+        _cmd_mark(args[1].upper(), number)
     else:
         print(__doc__)
         sys.exit(0)
