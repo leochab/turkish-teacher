@@ -25,6 +25,7 @@ A Claude Code-powered Turkish language learning environment. Open this folder in
 | `/quiz` | 10-question quiz based on your level and weak spots |
 | `/review` | Spaced repetition review of vocabulary due today |
 | `/sohbet` | Turkish-only conversation mode with inline corrections |
+| `/setup` | Onboarding flow to set or update your learner profile |
 | `/help` | Show available commands and where to start |
 
 **Examples:**
@@ -46,17 +47,21 @@ turkish-teacher/
 ├── templates/              ← clean copies; edit here to change structure
 │   ├── progress/learner.md
 │   ├── vocab/vocab.json
-│   └── curriculum/index.md
+│   ├── curriculum/index.md
+│   └── curriculum/index.json
+├── schemas/                ← JSON Schema Draft-07 files for all data structures
 ├── progress/
 │   └── learner.md          ← YOUR profile (gitignored — init with bootstrap.sh)
 ├── vocab/
 │   ├── README.md           ← vocab bank format & SRS field reference
 │   └── vocab.json          ← all vocabulary + SRS state (gitignored)
 ├── curriculum/
-│   ├── index.md            ← topic completion tracker (gitignored)
+│   ├── index.md            ← human-readable topic map (gitignored)
+│   ├── index.json          ← machine-readable topic completion tracker (gitignored)
 │   └── reference.md        ← linguistic reference (cases, harmony, suffix ordering)
 ├── scripts/
 │   ├── bootstrap.sh        ← init working files from templates/
+│   ├── curriculum_query.py ← read/write curriculum/index.json (mark topics complete)
 │   ├── session_start.py    ← deterministic dashboard (due words, streak, suggestion)
 │   ├── session_log_append.py ← appends a row to the session log in learner.md
 │   └── srs_update.py       ← applies SM-2 scheduling after each vocab card
@@ -68,9 +73,9 @@ turkish-teacher/
 
 ## Curriculum
 
-Full A1–C1 CEFR curriculum following the TOMER / Yunus Emre Institute progression. See `curriculum/index.md` for the complete topic map.
+Full A1–C1 CEFR curriculum following the TOMER / Yunus Emre Institute progression. See `curriculum/index.json` for the machine-readable topic map with prerequisites; `curriculum/index.md` is the human-readable counterpart.
 
-Progress is tracked in `progress/learner.md` — check off topics as you complete them.
+Progress is tracked automatically in `curriculum/index.json` — Claude marks topics complete after each `/lesson`.
 
 ---
 
@@ -86,4 +91,4 @@ This system is what makes Turkish feel hard at first and beautifully logical onc
 
 ## Contributing
 
-Lessons are delivered dynamically by the `/lesson` skill. The skill structure is defined in `.claude/commands/lesson.md`. See `curriculum/index.md` for the full topic list and prerequisites.
+Lessons are delivered dynamically by the `/lesson` skill. The skill structure is defined in `.claude/commands/lesson.md`. See `curriculum/index.json` for the full topic list and prerequisites.
