@@ -1,25 +1,31 @@
 #!/usr/bin/env python3
 """
-Append a session log row to progress/learner.md.
+Append a session log row to progress/learner.md and data/session-log.json.
 
 Usage:
   python3 scripts/session_log_append.py \\
     --date 2026-03-26 \\
     --command "/review" \\
     --vocab "kitap, ev" \\
-    --notes "5/7 correct; missed: araba"
+    --notes "5/7 correct; missed: araba" \\
+    [--accuracy 0.72] \\
+    [--duration 25]
 
-  --date     YYYY-MM-DD (defaults to today)
-  --command  What was covered (e.g. /review, /lesson accusative, free-form chat)
-  --vocab    New vocab added, or — if none (default: —)
-  --notes    Session notes
+  --date       YYYY-MM-DD (defaults to today)
+  --command    What was covered (e.g. /review, /lesson accusative, free-form chat)
+  --vocab      New vocab added, or — if none (default: —)
+  --notes      Session notes
+  --accuracy   Float 0.0–1.0 (optional)
+  --duration   Duration in minutes (optional integer)
 
 The row is appended under the first "## Session Log" table found in learner.md.
+A JSON object is also appended to data/session-log.json.
 Exits with code 1 and prints an error on failure.
 Requires: Python 3.6+ (stdlib only)
 """
 
 import argparse
+import json
 import os
 import re
 import shutil
@@ -29,6 +35,7 @@ from datetime import date
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEARNER_PATH = os.path.join(BASE, "progress", "learner.md")
+SESSION_LOG_JSON = os.path.join(BASE, "data", "session-log.json")
 SESSION_LOG_HEADER = "## Session Log"
 
 
@@ -128,9 +135,50 @@ def append_row(content, new_row):
     return "".join(new_lines)
 
 
+def append_json_entry(date_str, command, vocab, notes, accuracy, duration):
+    """Append a JSON entry to data/session-log.json using atomic write."""
+    json_dir = os.path.dirname(SESSION_LOG_JSON)
+    os.makedirs(json_dir, exist_ok=True)
+
+    # Load existing entries (initialize to [] if file missing or empty)
+    if os.path.exists(SESSION_LOG_JSON):
+        try:
+            with open(SESSION_LOG_JSON, encoding="utf-8") as f:
+                entries = json.load(f)
+        except (json.JSONDecodeError, ValueError):
+            entries = []
+    else:
+        entries = []
+
+    entry = {
+        "date": date_str,
+        "command": command,
+        "vocab_added": vocab,
+        "notes": notes,
+        "accuracy": accuracy,
+        "duration_minutes": duration,
+    }
+    entries.append(entry)
+
+    tmp_path = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w", dir=json_dir,
+            delete=False, suffix=".tmp", encoding="utf-8"
+        ) as tmp:
+            json.dump(entries, tmp, ensure_ascii=False, indent=2)
+            tmp.write("\n")
+            tmp_path = tmp.name
+        shutil.move(tmp_path, SESSION_LOG_JSON)
+    except Exception as e:
+        if tmp_path and os.path.exists(tmp_path):
+            os.unlink(tmp_path)
+        raise e
+
+
 def main():
     parser = argparse.ArgumentParser(
-        description="Append a row to the Session Log in progress/learner.md."
+        description="Append a row to the Session Log in progress/learner.md and data/session-log.json."
     )
     parser.add_argument("--date", default=date.today().isoformat(),
                         help="Session date (YYYY-MM-DD, default: today)")
@@ -140,6 +188,10 @@ def main():
                         help="New vocab added, or — if none")
     parser.add_argument("--notes", required=True,
                         help="Session notes")
+    parser.add_argument("--accuracy", type=float, default=None,
+                        help="Accuracy as a float 0.0–1.0 (optional)")
+    parser.add_argument("--duration", type=int, default=None,
+                        help="Duration in minutes (optional)")
     args = parser.parse_args()
 
     if not re.match(r"^\d{4}-\d{2}-\d{2}$", args.date):
@@ -179,6 +231,13 @@ def main():
         if tmp_path and os.path.exists(tmp_path):
             os.unlink(tmp_path)
         sys.exit(1)
+
+    try:
+        append_json_entry(args.date, args.command, args.vocab, args.notes,
+                          args.accuracy, args.duration)
+    except Exception as e:
+        print(f"Warning: failed to write JSON session log: {e}", file=sys.stderr)
+        # Don't exit 1 — markdown write already succeeded
 
     print(f"Session log updated: {args.date} | {args.command} | {args.vocab} | {args.notes}")
 
