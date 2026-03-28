@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "vocab-entry.schema.json",
+  "title": "Vocab Entry",
+  "description": "The vocabulary bank. Keys are Turkish words; values are SRS entry objects.",
+  "type": "object",
+  "patternProperties": {
+    "^.+$": {
+      "type": "object",
+      "required": ["root", "pos", "topic", "english", "example_tr", "example_en", "added", "next_review", "interval", "ease"],
+      "additionalProperties": false,
+      "properties": {
+        "root":       { "type": "string" },
+        "pos":        { "type": "string" },
+        "topic":      { "type": "string" },
+        "english":    { "type": "string" },
+        "example_tr": { "type": "string" },
+        "example_en": { "type": "string" },
+        "notes":      { "type": "string" },
+        "added":      { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "next_review":{ "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "interval":   { "type": "integer", "minimum": 1 },
+        "ease":       { "type": "number",  "minimum": 1.0, "maximum": 5.0 }
+      }
+    }
+  },
+  "additionalProperties": false
+}
